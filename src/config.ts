@@ -21,7 +21,7 @@ export const weddingConfig = {
     fatherPhone: '010-0000-0000',
     motherPhone: '010-0000-0000',
   },
-  mainPhoto: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=1067&fit=crop&crop=faces',
+  mainPhoto: '/wedding-invitation/images/main.jpg',
   date: '2026-11-28T14:00:00',
   greeting: {
     title: '결혼합니다',
@@ -58,11 +58,12 @@ export const weddingConfig = {
     ],
   },
   gallery: [
-    'https://picsum.photos/seed/wedding1/600/800',
-    'https://picsum.photos/seed/wedding2/600/800',
-    'https://picsum.photos/seed/wedding3/600/800',
-    'https://picsum.photos/seed/wedding4/600/800',
-    'https://picsum.photos/seed/wedding5/600/800',
-    'https://picsum.photos/seed/wedding6/600/800',
+    '/wedding-invitation/images/gallery/gallery1.jpg',
+    '/wedding-invitation/images/gallery/gallery2.jpg',
+    '/wedding-invitation/images/gallery/gallery3.jpg',
+    '/wedding-invitation/images/gallery/gallery4.jpg',
+    '/wedding-invitation/images/gallery/gallery5.jpg',
+    '/wedding-invitation/images/gallery/gallery6.jpg',
+    '/wedding-invitation/images/gallery/gallery7.jpg',
   ],
 }

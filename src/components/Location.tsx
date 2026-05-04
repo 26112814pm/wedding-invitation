@@ -83,7 +83,7 @@ const Location = () => {
 
   return (
     <section style={styles.section} className="fade-in">
-      <div className="section-divider"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g opacity="0.7"><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(0 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(45 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(90 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(135 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(180 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(225 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(270 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(315 16 16)"/><circle cx="16" cy="16" r="2.5" fill="#C9A96E"/></g></svg></div>
+      <div className="section-divider" />
       <h2 style={styles.title}>오시는 길</h2>
 
       <div style={styles.venueInfo}>
@@ -139,13 +139,13 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center',
     maxWidth: '480px',
     margin: '0 auto',
-    backgroundColor: '#FAF6F1',
+    backgroundColor: '#FFF4E8',
   },
   title: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.1rem',
     fontWeight: 400,
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     marginTop: '20px',
     marginBottom: '24px',
     letterSpacing: '4px',
@@ -157,24 +157,24 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.1rem',
     fontWeight: 700,
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     marginBottom: '4px',
   },
   venueHall: {
     fontSize: '0.9rem',
-    color: '#4A4A4A',
+    color: '#5A5A5A',
     marginBottom: '8px',
   },
   address: {
     fontSize: '0.85rem',
-    color: '#8A8A8A',
+    color: '#9A9A9A',
     marginBottom: '10px',
   },
   copyBtn: {
     fontSize: '0.75rem',
-    color: '#C9A96E',
+    color: '#E89940',
     backgroundColor: 'transparent',
-    border: '1px solid #C9A96E',
+    border: '1px solid #E89940',
     borderRadius: '12px',
     padding: '4px 14px',
     cursor: 'pointer',
@@ -185,7 +185,7 @@ const styles: Record<string, React.CSSProperties> = {
     height: '250px',
     borderRadius: '12px',
     overflow: 'hidden',
-    border: '1px solid #E8DDD0',
+    border: '1px solid #F5D9B8',
     marginBottom: '16px',
   },
   mapButtons: {
@@ -197,8 +197,8 @@ const styles: Record<string, React.CSSProperties> = {
   mapBtn: {
     padding: '10px 14px',
     fontSize: '0.8rem',
-    color: '#4A4A4A',
-    border: '1px solid #E0D5C5',
+    color: '#5A5A5A',
+    border: '1px solid #EBC79A',
     borderRadius: '20px',
     backgroundColor: '#FFFFFF',
     textDecoration: 'none',
@@ -221,11 +221,11 @@ const styles: Record<string, React.CSSProperties> = {
   transportType: {
     flexShrink: 0,
     fontWeight: 700,
-    color: '#C9A96E',
+    color: '#E89940',
     minWidth: '42px',
   },
   transportDetail: {
-    color: '#4A4A4A',
+    color: '#5A5A5A',
   },
 }
 

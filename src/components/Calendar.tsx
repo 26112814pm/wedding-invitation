@@ -35,7 +35,7 @@ const Calendar = () => {
 
   return (
     <section style={styles.section} className="fade-in">
-      <div className="section-divider"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g opacity="0.7"><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(0 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(45 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(90 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(135 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(180 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(225 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(270 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(315 16 16)"/><circle cx="16" cy="16" r="2.5" fill="#C9A96E"/></g></svg></div>
+      <div className="section-divider" />
       <h2 style={styles.title}>
         {year}년 {monthName}월
       </h2>
@@ -45,7 +45,7 @@ const Calendar = () => {
           {dayLabels.map((label, i) => (
             <span key={i} style={{
               ...styles.dayLabel,
-              color: i === 0 ? '#C4724E' : i === 6 ? '#6B9BD2' : '#8A8A8A',
+              color: i === 0 ? '#FF6B1A' : i === 6 ? '#6B9BD2' : '#9A9A9A',
             }}>
               {label}
             </span>
@@ -65,10 +65,10 @@ const Calendar = () => {
                   color: isWeddingDay
                     ? '#FFFFFF'
                     : dayOfWeek === 0
-                    ? '#C4724E'
+                    ? '#FF6B1A'
                     : dayOfWeek === 6
                     ? '#6B9BD2'
-                    : '#4A4A4A',
+                    : '#5A5A5A',
                 }}
               >
                 {day || ''}
@@ -97,13 +97,13 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center',
     maxWidth: '480px',
     margin: '0 auto',
-    backgroundColor: '#FAF6F1',
+    backgroundColor: '#FFF4E8',
   },
   title: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.1rem',
     fontWeight: 400,
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     marginTop: '20px',
     marginBottom: '24px',
     letterSpacing: '2px',
@@ -138,7 +138,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
   },
   weddingDay: {
-    backgroundColor: '#C4724E',
+    backgroundColor: '#FF6B1A',
     color: '#FFFFFF',
     fontWeight: 700,
   },
@@ -148,7 +148,7 @@ const styles: Record<string, React.CSSProperties> = {
   ddayText: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '0.95rem',
-    color: '#C9A96E',
+    color: '#E89940',
     letterSpacing: '1px',
   },
 }

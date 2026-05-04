@@ -1,16 +1,16 @@
 :root {
-  --color-primary: #C4724E;
-  --color-primary-light: #E8C4A8;
-  --color-primary-dark: #A0563A;
-  --color-secondary: #8B7355;
-  --color-secondary-light: #D4C4A8;
-  --color-accent: #C9A96E;
-  --color-bg: #FAF6F1;
+  --color-primary: #FF6B1A;        /* 비비드 오렌지 (메인) */
+  --color-primary-light: #FFD4A8;  /* 연한 피치 오렌지 */
+  --color-primary-dark: #E04E0F;   /* 진한 다크 오렌지 */
+  --color-secondary: #B5763A;      /* 따뜻한 테라코타 브라운 */
+  --color-secondary-light: #FFE2C2;/* 웜 탠 */
+  --color-accent: #E89940;         /* 앰버 골드 */
+  --color-bg: #FFF4E8;             /* 따뜻한 크림 배경 */
   --color-bg-section: #FFFFFF;
-  --color-text: #4A4A4A;
-  --color-text-light: #8A8A8A;
-  --color-text-dark: #2D2D2D;
-  --color-divider: #E8DDD0;
+  --color-text: #5A5A5A;
+  --color-text-light: #9A9A9A;
+  --color-text-dark: #3D3D3D;
+  --color-divider: #F5D9B8;        /* 웜 디바이더 */
 
   --font-serif: 'Noto Serif KR', 'Batang', serif;
   --font-display: 'Gowun Batang', 'Batang', serif;

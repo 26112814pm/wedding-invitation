@@ -11,19 +11,6 @@ interface GuestMessage {
 
 const cosmosDivider = (
   <div className="section-divider">
-    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-      <g opacity="0.7">
-        <ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(0 16 16)"/>
-        <ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(45 16 16)"/>
-        <ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(90 16 16)"/>
-        <ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(135 16 16)"/>
-        <ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(180 16 16)"/>
-        <ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(225 16 16)"/>
-        <ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(270 16 16)"/>
-        <ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(315 16 16)"/>
-        <circle cx="16" cy="16" r="2.5" fill="#C9A96E"/>
-      </g>
-    </svg>
   </div>
 )
 
@@ -140,20 +127,20 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center',
     maxWidth: '480px',
     margin: '0 auto',
-    backgroundColor: '#FAF6F1',
+    backgroundColor: '#FFFFFF',
   },
   title: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.1rem',
     fontWeight: 400,
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     marginTop: '20px',
     marginBottom: '12px',
     letterSpacing: '4px',
   },
   subtitle: {
     fontSize: '0.85rem',
-    color: '#8A8A8A',
+    color: '#9A9A9A',
     marginBottom: '24px',
   },
   form: {
@@ -165,9 +152,9 @@ const styles: Record<string, React.CSSProperties> = {
   nameInput: {
     padding: '12px 14px',
     fontSize: '0.9rem',
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     backgroundColor: '#FFFFFF',
-    border: '1px solid #E8DDD0',
+    border: '1px solid #F5D9B8',
     borderRadius: '8px',
     fontFamily: "'Noto Serif KR', serif",
     outline: 'none',
@@ -175,9 +162,9 @@ const styles: Record<string, React.CSSProperties> = {
   textarea: {
     padding: '12px 14px',
     fontSize: '0.9rem',
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     backgroundColor: '#FFFFFF',
-    border: '1px solid #E8DDD0',
+    border: '1px solid #F5D9B8',
     borderRadius: '8px',
     fontFamily: "'Noto Serif KR', serif",
     outline: 'none',
@@ -188,7 +175,7 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '12px',
     fontSize: '0.9rem',
     color: '#FFFFFF',
-    backgroundColor: '#C4724E',
+    backgroundColor: '#FF6B1A',
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
@@ -207,7 +194,7 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: '#FFFFFF',
     borderRadius: '10px',
     padding: '14px 16px',
-    border: '1px solid #E8DDD0',
+    border: '1px solid #F5D9B8',
   },
   messageHeader: {
     display: 'flex',
@@ -218,16 +205,16 @@ const styles: Record<string, React.CSSProperties> = {
   messageName: {
     fontSize: '0.85rem',
     fontWeight: 700,
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     fontFamily: "'Gowun Batang', serif",
   },
   messageDate: {
     fontSize: '0.7rem',
-    color: '#B0A090',
+    color: '#A87850',
   },
   messageText: {
     fontSize: '0.85rem',
-    color: '#4A4A4A',
+    color: '#5A5A5A',
     lineHeight: 1.7,
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',

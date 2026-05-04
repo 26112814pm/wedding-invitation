@@ -65,8 +65,8 @@ const Gallery = () => {
 
   return (
     <section style={styles.section} className="fade-in">
-      <div className="section-divider"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g opacity="0.7"><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(0 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(45 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(90 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(135 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(180 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(225 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(270 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(315 16 16)"/><circle cx="16" cy="16" r="2.5" fill="#C9A96E"/></g></svg></div>
-      <h2 style={styles.title}>Gallery</h2>
+      <div className="section-divider" />
+      <h2 style={styles.title}></h2>
 
       <div style={styles.grid}>
         {images.map((src, i) => (
@@ -110,7 +110,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.1rem',
     fontWeight: 400,
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     marginTop: '20px',
     marginBottom: '24px',
     letterSpacing: '4px',
@@ -155,7 +155,7 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
     width: '48px',
     height: '48px',
     borderRadius: '50%',
-    backgroundColor: '#C4724E',
+    backgroundColor: '#FF6B1A',
     color: '#FFFFFF',
     fontSize: '1.6rem',
     fontWeight: 300,
@@ -198,7 +198,7 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
     height: '48px',
     borderRadius: '50%',
     backgroundColor: 'rgba(201, 169, 110, 0.15)',
-    color: '#C9A96E',
+    color: '#E89940',
     fontSize: '1.5rem',
     display: 'flex',
     alignItems: 'center',
@@ -207,7 +207,7 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
     cursor: 'pointer',
   },
   counter: {
-    color: '#8A8A8A',
+    color: '#9A9A9A',
     fontSize: '0.9rem',
     fontFamily: "'Gowun Batang', serif",
   },

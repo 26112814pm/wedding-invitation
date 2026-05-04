@@ -16,6 +16,7 @@ const App = () => {
   const [showIntro, setShowIntro] = useState(true)
   const [showRsvpPopup, setShowRsvpPopup] = useState(false)
   const [showFloatingBtn, setShowFloatingBtn] = useState(false)
+  const [scrolledPastMain, setScrolledPastMain] = useState(false)
   const [isAdmin, setIsAdmin] = useState(window.location.hash === '#admin')
 
   useEffect(() => {
@@ -27,17 +28,28 @@ const App = () => {
   const handleIntroComplete = useCallback(() => {
     setShowIntro(false)
     // 인트로 끝난 후 0.8초 뒤 RSVP 팝업 (한 번만)
-    const alreadyAnswered = localStorage.getItem('rsvp_shown')
-    if (!alreadyAnswered) {
-      setTimeout(() => setShowRsvpPopup(true), 10)
+    const dismissedDate = localStorage.getItem('rsvp_dismissed_date')
+    const alreadySubmitted = localStorage.getItem('rsvp_submitted')
+    const todayDismissed = dismissedDate === new Date().toDateString()
+    if (!alreadySubmitted && !todayDismissed) {
+      setTimeout(() => setShowRsvpPopup(true), 0)
     }
-    // 플로팅 버튼은 인트로 후 항상 표시
+    // 플로팅 버튼은 스크롤 시 표시
     setTimeout(() => setShowFloatingBtn(true), 100)
+
+    // 스크롤 감지: 메인 비주얼을 지나면 플로팅 버튼 표시
+    const handleScroll = () => {
+      setScrolledPastMain(window.scrollY > 100) // ← 스크롤 100px 이상 내리면 버튼 등장
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleRsvpPopupClose = useCallback(() => {
     setShowRsvpPopup(false)
-    localStorage.setItem('rsvp_shown', 'true')
+    // 닫기(X) 버튼은 localStorage에 아무것도 저장하지 않음 → 다음 접속 시 다시 뜸
+    // "오늘 그만보기"는 RsvpModal 내부에서 rsvp_dismissed_date를 저장
+    // "전달하기" 완료 시 RsvpModal 내부에서 rsvp_submitted를 저장
   }, [])
 
   const handleFloatingClick = useCallback(() => {
@@ -87,7 +99,7 @@ const App = () => {
       <RsvpModal isOpen={showRsvpPopup} onClose={handleRsvpPopupClose} />
 
       {/* 플로팅 참석의사 버튼 */}
-      {showFloatingBtn && !showIntro && !showRsvpPopup && (
+      {showFloatingBtn && !showIntro && !showRsvpPopup && scrolledPastMain && (
         <button
           style={styles.floatingBtn}
           onClick={handleFloatingClick}
@@ -121,7 +133,7 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: 'center',
     gap: '8px',
     padding: '12px 20px',
-    backgroundColor: '#C4724E',
+    backgroundColor: '#FF6B1A',
     color: '#FFFFFF',
     border: 'none',
     borderRadius: '28px',

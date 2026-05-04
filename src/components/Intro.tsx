@@ -1,22 +1,36 @@
 import { useState, useEffect } from 'react'
-import { weddingConfig } from '../config'
 
 interface IntroProps {
   onComplete: () => void
 }
 
+// 일러스트 3장 순차 노출 → 메인 화면 전환 (총 3초)
+const FRAMES = [
+  '/wedding-invitation/images/1.png',
+  '/wedding-invitation/images/2.png',
+  '/wedding-invitation/images/3.png',
+]
+
+// 타이밍 (ms) — 합 3000ms
+const FRAME_DURATION = 1000   // 각 프레임 노출 시간
+const FADE_DURATION = 400     // 컨테이너 페이드 아웃 시간
+const TOTAL_DURATION = 3000   // 전체 인트로 시간
+
 const Intro = ({ onComplete }: IntroProps) => {
-  const [phase, setPhase] = useState<'names' | 'message' | 'fadeOut'>('names')
+  const [frame, setFrame] = useState(0)
+  const [exiting, setExiting] = useState(false)
 
   useEffect(() => {
-    const msgTimer = setTimeout(() => setPhase('message'), 2000)
-    const fadeTimer = setTimeout(() => setPhase('fadeOut'), 4000)
-    const completeTimer = setTimeout(() => onComplete(), 5000)
+    const t1 = setTimeout(() => setFrame(1), FRAME_DURATION)
+    const t2 = setTimeout(() => setFrame(2), FRAME_DURATION * 2)
+    const tFade = setTimeout(() => setExiting(true), TOTAL_DURATION - FADE_DURATION)
+    const tDone = setTimeout(() => onComplete(), TOTAL_DURATION)
 
     return () => {
-      clearTimeout(msgTimer)
-      clearTimeout(fadeTimer)
-      clearTimeout(completeTimer)
+      clearTimeout(t1)
+      clearTimeout(t2)
+      clearTimeout(tFade)
+      clearTimeout(tDone)
     }
   }, [onComplete])
 
@@ -24,52 +38,22 @@ const Intro = ({ onComplete }: IntroProps) => {
     <div
       style={{
         ...introStyles.container,
-        opacity: phase === 'fadeOut' ? 0 : 1,
-        transition: 'opacity 1s ease',
+        opacity: exiting ? 0 : 1,
+        transition: `opacity ${FADE_DURATION}ms ease`,
       }}
     >
-      {/* 이름 ♥ 이름 */}
-      <div
-        style={{
-          ...introStyles.nameArea,
-          opacity: phase === 'names' || phase === 'message' ? 1 : 0,
-          transform: 'translateY(0)',
-          transition: 'opacity 1s ease, transform 1s ease',
-        }}
-      >
-        <span style={introStyles.nameText}>{weddingConfig.groom.name}</span>
-        <span style={introStyles.heart}>♥</span>
-        <span style={introStyles.nameText}>{weddingConfig.bride.name}</span>
-      </div>
-
-      {/* 결혼합니다 */}
-      <div
-        style={{
-          ...introStyles.messageArea,
-          opacity: phase === 'message' ? 1 : 0,
-          transform: phase === 'message' ? 'translateY(0)' : 'translateY(12px)',
-          transition: 'opacity 1s ease, transform 1s ease',
-        }}
-      >
-        <div style={introStyles.ornamentLine}>
-          <span style={introStyles.ornamentDash} />
-          {/* Cosmos flower ornament */}
-          <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
-            <g opacity="0.7">
-              <ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(0 16 16)"/>
-              <ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(45 16 16)"/>
-              <ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(90 16 16)"/>
-              <ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(135 16 16)"/>
-              <ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(180 16 16)"/>
-              <ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(225 16 16)"/>
-              <ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(270 16 16)"/>
-              <ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(315 16 16)"/>
-              <circle cx="16" cy="16" r="2.5" fill="#C9A96E"/>
-            </g>
-          </svg>
-          <span style={introStyles.ornamentDash} />
-        </div>
-        <p style={introStyles.messageText}>결혼합니다</p>
+      <div style={introStyles.imageWrapper}>
+        {FRAMES.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt={`intro-${i + 1}`}
+            style={{
+              ...introStyles.frame,
+              opacity: frame === i ? 1 : 0,
+            }}
+          />
+        ))}
       </div>
     </div>
   )
@@ -83,52 +67,29 @@ const introStyles: Record<string, React.CSSProperties> = {
     right: 0,
     bottom: 0,
     zIndex: 200000,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '28px',
-    background: 'linear-gradient(180deg, #FAF6F1 0%, #FFFFFF 40%, #F2E6DC 100%)',
+    background: '#FFF4E8',
     overflow: 'hidden',
-  },
-  nameArea: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '14px',
   },
-  nameText: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '1.8rem',
-    fontWeight: 700,
-    color: '#2D2D2D',
-    letterSpacing: '4px',
+  imageWrapper: {
+    position: 'relative',
+    width: '100%',
+    maxWidth: '480px',  // 모바일 가로 비율 유지 (480px 폭)
+    height: '100%',
+    margin: '0 auto',
   },
-  heart: {
-    color: '#D4799C',
-    fontSize: '1.1rem',
-  },
-  messageArea: {
-    textAlign: 'center' as const,
-  },
-  ornamentLine: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '12px',
-    marginBottom: '16px',
-  },
-  ornamentDash: {
-    display: 'inline-block',
-    width: '50px',
-    height: '1px',
-    background: 'linear-gradient(to right, transparent, #C9A96E, transparent)',
-  },
-  messageText: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '1.3rem',
-    color: '#4A4A4A',
-    letterSpacing: '6px',
+  frame: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain',  // 일러스트 잘림 없이 전체 표시
+    transition: 'opacity 350ms ease-in-out',
+    pointerEvents: 'none',
+    userSelect: 'none',
   },
 }
 

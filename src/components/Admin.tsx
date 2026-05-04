@@ -200,9 +200,9 @@ const Admin = () => {
               <div key={g.id} style={s.guestCard}>
                 <div style={s.guestHeader}>
                   <strong>{g.name}</strong>
-                  <span style={{ fontSize: '0.7rem', color: '#8A8A8A' }}>{formatDate(g.createdAt)}</span>
+                  <span style={{ fontSize: '0.7rem', color: '#9A9A9A' }}>{formatDate(g.createdAt)}</span>
                 </div>
-                <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#4A4A4A' }}>{g.message}</p>
+                <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#5A5A5A' }}>{g.message}</p>
               </div>
             ))}
           </div>
@@ -218,7 +218,7 @@ const s: Record<string, React.CSSProperties> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FAF6F1',
+    backgroundColor: '#FFF4E8',
     padding: '20px',
   },
   loginCard: {
@@ -233,7 +233,7 @@ const s: Record<string, React.CSSProperties> = {
   loginTitle: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.2rem',
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     marginBottom: '24px',
     letterSpacing: '3px',
   },
@@ -243,7 +243,7 @@ const s: Record<string, React.CSSProperties> = {
     fontSize: '0.9rem',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#E8DDD0',
+    borderColor: '#F5D9B8',
     borderRadius: '8px',
     marginBottom: '12px',
     outline: 'none',
@@ -255,7 +255,7 @@ const s: Record<string, React.CSSProperties> = {
     padding: '14px',
     fontSize: '0.95rem',
     color: '#FFFFFF',
-    backgroundColor: '#C4724E',
+    backgroundColor: '#FF6B1A',
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
@@ -265,13 +265,13 @@ const s: Record<string, React.CSSProperties> = {
     maxWidth: '700px',
     margin: '0 auto',
     padding: '24px 16px',
-    backgroundColor: '#FAF6F1',
+    backgroundColor: '#FFF4E8',
     minHeight: '100vh',
   },
   pageTitle: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.3rem',
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     textAlign: 'center',
     marginBottom: '20px',
     letterSpacing: '3px',
@@ -288,15 +288,15 @@ const s: Record<string, React.CSSProperties> = {
     backgroundColor: '#FFFFFF',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#E8DDD0',
+    borderColor: '#F5D9B8',
     borderRadius: '8px',
     cursor: 'pointer',
-    color: '#4A4A4A',
+    color: '#5A5A5A',
     fontFamily: "'Noto Serif KR', serif",
   },
   tabActive: {
-    backgroundColor: '#C4724E',
-    borderColor: '#C4724E',
+    backgroundColor: '#FF6B1A',
+    borderColor: '#FF6B1A',
     color: '#FFFFFF',
   },
   summary: {
@@ -314,13 +314,13 @@ const s: Record<string, React.CSSProperties> = {
   summaryLabel: {
     display: 'block',
     fontSize: '0.7rem',
-    color: '#8A8A8A',
+    color: '#9A9A9A',
     marginBottom: '4px',
   },
   summaryValue: {
     fontSize: '1.1rem',
     fontWeight: 700,
-    color: '#C4724E',
+    color: '#FF6B1A',
   },
   exportBtn: {
     width: '100%',
@@ -347,16 +347,16 @@ const s: Record<string, React.CSSProperties> = {
   },
   th: {
     padding: '10px 6px',
-    backgroundColor: '#FAF6F1',
-    color: '#8A8A8A',
+    backgroundColor: '#FFF4E8',
+    color: '#9A9A9A',
     fontWeight: 600,
     fontSize: '0.75rem',
-    borderBottom: '1px solid #E8DDD0',
+    borderBottom: '1px solid #F5D9B8',
     whiteSpace: 'nowrap',
   },
   td: {
     padding: '10px 6px',
-    borderBottom: '1px solid #F0E6D8',
+    borderBottom: '1px solid #F8DEBC',
     textAlign: 'center',
     whiteSpace: 'nowrap',
   },

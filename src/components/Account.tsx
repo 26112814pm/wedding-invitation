@@ -44,7 +44,7 @@ const Account = () => {
 
   return (
     <section style={styles.section} className="fade-in">
-      <div className="section-divider"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g opacity="0.7"><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(0 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(45 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(90 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(135 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(180 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(225 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(270 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(315 16 16)"/><circle cx="16" cy="16" r="2.5" fill="#C9A96E"/></g></svg></div>
+      <div className="section-divider" />
       <h2 style={styles.title}>마음 전하실 곳</h2>
       <p style={styles.subtitle}>축하의 마음을 담아 축의금을 전달해 보세요.</p>
 
@@ -81,20 +81,20 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center',
     maxWidth: '480px',
     margin: '0 auto',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FFF4E8',
   },
   title: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.1rem',
     fontWeight: 400,
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     marginTop: '20px',
     marginBottom: '12px',
     letterSpacing: '4px',
   },
   subtitle: {
     fontSize: '0.85rem',
-    color: '#8A8A8A',
+    color: '#9A9A9A',
     marginBottom: '28px',
   },
   buttons: {
@@ -106,17 +106,17 @@ const styles: Record<string, React.CSSProperties> = {
     width: '100%',
     padding: '14px 20px',
     fontSize: '0.9rem',
-    color: '#4A4A4A',
-    backgroundColor: '#FAF6F1',
-    border: '1px solid #E8DDD0',
+    color: '#5A5A5A',
+    backgroundColor: '#FFF4E8',
+    border: '1px solid #F5D9B8',
     borderRadius: '8px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     fontFamily: "'Noto Serif KR', serif",
   },
   toggleBtnActive: {
-    backgroundColor: '#E8C4A8',
-    borderColor: '#C4724E',
+    backgroundColor: '#FFAA66',
+    borderColor: '#FF6B1A',
   },
   accountList: {
     display: 'flex',
@@ -140,22 +140,22 @@ const styles: Record<string, React.CSSProperties> = {
   },
   bank: {
     fontSize: '0.8rem',
-    color: '#8A8A8A',
+    color: '#9A9A9A',
   },
   number: {
     fontSize: '0.9rem',
-    color: '#2D2D2D',
+    color: '#3D3D3D',
     fontWeight: 700,
   },
   holder: {
     fontSize: '0.8rem',
-    color: '#8A8A8A',
+    color: '#9A9A9A',
   },
   copyBtn: {
     padding: '6px 14px',
     fontSize: '0.8rem',
     color: '#FFFFFF',
-    backgroundColor: '#C4724E',
+    backgroundColor: '#FF6B1A',
     border: 'none',
     borderRadius: '16px',
     cursor: 'pointer',

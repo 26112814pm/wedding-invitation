@@ -6,11 +6,7 @@ const Footer = () => {
   return (
     <footer style={styles.footer}>
       <div style={styles.copyright}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ width: '40px', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.3))' }} />
-          <svg width="16" height="16" viewBox="0 0 32 32" fill="none"><g opacity="0.4"><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(0 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(45 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(90 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(135 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(180 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(225 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#D4799C" transform="rotate(270 16 16)"/><ellipse cx="16" cy="10" rx="3" ry="6" fill="#E8A0B8" transform="rotate(315 16 16)"/><circle cx="16" cy="16" r="2.5" fill="#C9A96E"/></g></svg>
-          <div style={{ width: '40px', height: '1px', background: 'linear-gradient(to left, transparent, rgba(201,169,110,0.3))' }} />
-        </div>
+        <div style={{ width: '40px', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.3), transparent)' }} />
         <p style={styles.copyrightText}>
           {groom.name} & {bride.name}
         </p>
@@ -25,7 +21,7 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center',
     maxWidth: '480px',
     margin: '0 auto',
-    backgroundColor: '#FAF6F1',
+    backgroundColor: '#FFF4E8',
   },
   copyright: {
     display: 'flex',
@@ -40,7 +36,7 @@ const styles: Record<string, React.CSSProperties> = {
   copyrightText: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '0.8rem',
-    color: '#B0A090',
+    color: '#A87850',
     letterSpacing: '2px',
   },
 }
