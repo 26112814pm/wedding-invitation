@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>하트 디자인 비교</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root { --orange: #FF6B1A; --bg: #FFF4E8; --text: #3D3D3D; --muted: #9A9A9A; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Gowun Batang', serif;
+        background: var(--bg);
+        color: var(--text);
+        padding: 40px 16px 60px;
+        min-height: 100vh;
+      }
+      h1 { text-align: center; font-size: 1.4rem; margin-bottom: 8px; letter-spacing: 2px; }
+      .subtitle { text-align: center; color: var(--muted); font-size: 0.9rem; margin-bottom: 36px; }
+      .grid {
+        max-width: 720px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px 16px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      }
+      .preview {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .label-id {
+        display: inline-block;
+        background: var(--orange);
+        color: white;
+        padding: 2px 10px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+        letter-spacing: 1px;
+      }
+      .name {
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+      }
+      .desc {
+        color: var(--muted);
+        font-size: 0.78rem;
+        line-height: 1.4;
+      }
+      @media (max-width: 480px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>하트 디자인 12종</h1>
+    <p class="subtitle">마음에 드는 하트의 알파벳을 알려주시면 적용해드려요</p>
+
+    <div class="grid">
+
+      <!-- A: 가는 외곽선 (현재) -->
+      <div class="card">
+        <span class="label-id">A</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="none" stroke="#FF6B1A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19.5 C5.6 14.6 2.2 11 2.2 7.5 C2.2 4.5 4.4 2.4 7 2.4 C9.3 2.4 11 3.5 12 5.5 C13 3.5 14.7 2.4 17 2.4 C19.6 2.4 21.8 4.5 21.8 7.5 C21.8 11 18.4 14.6 12 19.5 Z"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">가는 외곽선 (현재)</div>
+        <div class="desc">얇은 펜 라인의 캘리그래피 결</div>
+      </div>
+
+      <!-- B: 굵은 외곽선 -->
+      <div class="card">
+        <span class="label-id">B</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="none" stroke="#FF6B1A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19.5 C5.6 14.6 2.2 11 2.2 7.5 C2.2 4.5 4.4 2.4 7 2.4 C9.3 2.4 11 3.5 12 5.5 C13 3.5 14.7 2.4 17 2.4 C19.6 2.4 21.8 4.5 21.8 7.5 C21.8 11 18.4 14.6 12 19.5 Z"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">굵은 외곽선</div>
+        <div class="desc">가독성 좋은 마커펜 느낌</div>
+      </div>
+
+      <!-- C: 단색 채움 -->
+      <div class="card">
+        <span class="label-id">C</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="#FF6B1A">
+            <path d="M12 19.5 C5.6 14.6 2.2 11 2.2 7.5 C2.2 4.5 4.4 2.4 7 2.4 C9.3 2.4 11 3.5 12 5.5 C13 3.5 14.7 2.4 17 2.4 C19.6 2.4 21.8 4.5 21.8 7.5 C21.8 11 18.4 14.6 12 19.5 Z"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">단색 채움</div>
+        <div class="desc">심플한 솔리드 하트</div>
+      </div>
+
+      <!-- D: 통통 + 하이라이트 -->
+      <div class="card">
+        <span class="label-id">D</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
+            <path d="M12 19.8 C5.8 15.2 2 11 2 7.6 C2 4.6 4.4 2.5 7 2.5 C9.3 2.5 10.9 3.6 12 5.6 C13.1 3.6 14.7 2.5 17 2.5 C19.6 2.5 22 4.6 22 7.6 C22 11 18.2 15.2 12 19.8 Z" fill="#FF7A4D" fill-opacity="0.95"/>
+            <ellipse cx="7.6" cy="7" rx="1.6" ry="2" fill="rgba(255,255,255,0.55)" transform="rotate(-22 7.6 7)"/>
+            <circle cx="10.5" cy="5.5" r="0.7" fill="rgba(255,255,255,0.45)"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">통통 + 반짝</div>
+        <div class="desc">3D 풍선 같은 귀여운 스타일</div>
+      </div>
+
+      <!-- E: 점선 외곽선 -->
+      <div class="card">
+        <span class="label-id">E</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="none" stroke="#FF6B1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 2">
+            <path d="M12 19.5 C5.6 14.6 2.2 11 2.2 7.5 C2.2 4.5 4.4 2.4 7 2.4 C9.3 2.4 11 3.5 12 5.5 C13 3.5 14.7 2.4 17 2.4 C19.6 2.4 21.8 4.5 21.8 7.5 C21.8 11 18.4 14.6 12 19.5 Z"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">점선 외곽선</div>
+        <div class="desc">자수/스티치 느낌</div>
+      </div>
+
+      <!-- F1: 더블 하트 (대각선 상단) -->
+      <div class="card">
+        <span class="label-id">F1</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
+            <defs>
+              <linearGradient id="dhgrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFB570"/>
+                <stop offset="100%" stop-color="#E04E0F"/>
+              </linearGradient>
+            </defs>
+            <!-- 뒤쪽 작은 하트 (80% 크기, 우상단 대각선) -->
+            <g transform="translate(8.8 -2.6) scale(0.8)" opacity="0.7">
+              <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#dhgrad1)"/>
+            </g>
+            <!-- 앞쪽 큰 하트 -->
+            <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#dhgrad1)"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">더블 하트 - 대각선 상단</div>
+        <div class="desc">작은 하트가 우상단 대각선에 위치 (0.8배)</div>
+      </div>
+
+      <!-- F2: 더블 하트 (가운데 + 조금 오른쪽) -->
+      <div class="card">
+        <span class="label-id">F2</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <defs>
+              <linearGradient id="dhgrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFB570"/>
+                <stop offset="100%" stop-color="#E04E0F"/>
+              </linearGradient>
+            </defs>
+            <!-- 뒤쪽 작은 하트 (80% 크기, 세로 중앙 + 우측) -->
+            <g transform="translate(7.8 2.4) scale(0.8)" opacity="0.7">
+              <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#dhgrad2)"/>
+            </g>
+            <!-- 앞쪽 큰 하트 -->
+            <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#dhgrad2)"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">더블 하트 - 중앙 + 우측</div>
+        <div class="desc">세로 중앙 정렬, 살짝 오른쪽 (0.8배)</div>
+      </div>
+
+      <!-- G: 외곽 + 중앙 점 -->
+      <div class="card">
+        <span class="label-id">G</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="none" stroke="#FF6B1A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19.5 C5.6 14.6 2.2 11 2.2 7.5 C2.2 4.5 4.4 2.4 7 2.4 C9.3 2.4 11 3.5 12 5.5 C13 3.5 14.7 2.4 17 2.4 C19.6 2.4 21.8 4.5 21.8 7.5 C21.8 11 18.4 14.6 12 19.5 Z"/>
+            <circle cx="12" cy="9" r="1.5" fill="#FF6B1A" stroke="none"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">외곽 + 중앙 점</div>
+        <div class="desc">데코 포인트가 있는 미니멀</div>
+      </div>
+
+      <!-- H: 손그림 (불규칙) -->
+      <div class="card">
+        <span class="label-id">H</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22" fill="none" stroke="#FF6B1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19.8 C5.4 15 2.5 11.4 2 7.5 C1.8 4.6 4.6 2.6 7 2.5 C9.3 2.5 10.7 3.4 12 5.7 C13.4 3.5 14.6 2.5 17 2.4 C19.5 2.4 21.8 4.5 22 7.4 C22.1 11.4 18.2 14.7 12 19.8 Z"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">손그림 불규칙</div>
+        <div class="desc">손으로 그린 듯 살짝 비대칭</div>
+      </div>
+
+      <!-- I: 텍스트 ♡ (비채움) -->
+      <div class="card">
+        <span class="label-id">I</span>
+        <div class="preview">
+          <span>장재균</span>
+          <span style="color: #FF6B1A; font-size: 1.4rem; font-weight: 700;">♡</span>
+          <span>배유빈</span>
+        </div>
+        <div class="name">텍스트 ♡ (비채움)</div>
+        <div class="desc">유니코드 문자, 심플 라인</div>
+      </div>
+
+      <!-- J: 텍스트 ♥ (채움) -->
+      <div class="card">
+        <span class="label-id">J</span>
+        <div class="preview">
+          <span>장재균</span>
+          <span style="color: #FF6B1A; font-size: 1.2rem;">♥</span>
+          <span>배유빈</span>
+        </div>
+        <div class="name">텍스트 ♥ (채움)</div>
+        <div class="desc">전통적 클래식 하트 글리프</div>
+      </div>
+
+      <!-- K: 하트 + 작은 별 -->
+      <div class="card">
+        <span class="label-id">K</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="28" height="22" viewBox="0 0 32 22" fill="#FF6B1A">
+            <path d="M14 20 C7.6 15.5 4.2 11.7 4.2 8.2 C4.2 5.2 6.4 3.1 9 3.1 C11.3 3.1 13 4.2 14 6.2 C15 4.2 16.7 3.1 19 3.1 C21.6 3.1 23.8 5.2 23.8 8.2 C23.8 11.7 20.4 15.5 14 20 Z"/>
+            <path d="M27 5 L27.7 6.5 L29.3 6.7 L28.1 7.8 L28.4 9.4 L27 8.6 L25.6 9.4 L25.9 7.8 L24.7 6.7 L26.3 6.5 Z" fill="#E89940"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">하트 + 반짝 별</div>
+        <div class="desc">살짝 장식 포인트 추가</div>
+      </div>
+
+      <!-- L: 그라데이션 -->
+      <div class="card">
+        <span class="label-id">L</span>
+        <div class="preview">
+          <span>장재균</span>
+          <svg width="24" height="22" viewBox="0 0 24 22">
+            <defs>
+              <linearGradient id="hgrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFB570"/>
+                <stop offset="100%" stop-color="#E04E0F"/>
+              </linearGradient>
+            </defs>
+            <path d="M12 19.5 C5.6 14.6 2.2 11 2.2 7.5 C2.2 4.5 4.4 2.4 7 2.4 C9.3 2.4 11 3.5 12 5.5 C13 3.5 14.7 2.4 17 2.4 C19.6 2.4 21.8 4.5 21.8 7.5 C21.8 11 18.4 14.6 12 19.5 Z" fill="url(#hgrad)"/>
+          </svg>
+          <span>배유빈</span>
+        </div>
+        <div class="name">그라데이션</div>
+        <div class="desc">위→아래 색감 그라데이션</div>
+      </div>
+
+    </div>
+  </body>
+</html>
