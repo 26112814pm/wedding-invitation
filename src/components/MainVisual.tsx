@@ -22,17 +22,26 @@ const MainVisual = () => {
         />
         {/* 전체 오버레이 */}
         <div style={styles.overlay}>
-          {/* 상단: happily ever after */}
+          {/* 상단: Happily ever after */}
           <div style={styles.topArea}>
-            <p style={styles.scriptText}>happily ever after</p>
+            <p style={styles.scriptText}>Happily ever after</p>
           </div>
 
           {/* 하단: 이름 + 날짜 + 장소 */}
           <div style={styles.bottomArea}>
             <div style={styles.names}>
               <span style={styles.name}>{weddingConfig.groom.name}</span>
-              <svg style={styles.heartSvg} width="16" height="15" viewBox="0 0 24 22" fill="none">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#FF7A4D" fillOpacity="0.9"/>
+              <svg style={styles.heartSvg} width="24" height="22" viewBox="0 0 24 22" fill="none">
+                <defs>
+                  <linearGradient id="mvDoubleHeart" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#FFB570" />
+                    <stop offset="100%" stopColor="#E04E0F" />
+                  </linearGradient>
+                </defs>
+                <g transform="translate(10 2.4) scale(0.8)" opacity="0.7">
+                  <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#mvDoubleHeart)" />
+                </g>
+                <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#mvDoubleHeart)" />
               </svg>
               <span style={styles.name}>{weddingConfig.bride.name}</span>
             </div>
@@ -59,10 +68,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
   photoArea: {
     width: '100%',
-    height: '600px', // ← 메인 사진 세로 높이 (px 고정값, 원하는 크기로 조정)
+    aspectRatio: '2 / 3', // ← 사진 원본 비율(1200×1800 = 2:3) 그대로 — 잘림 없음, 검은띠 없음
     position: 'relative',
     overflow: 'hidden',
     borderRadius: '0px', // ← 사진 모서리 둥글기 (0px=각진, 8px=약간 둥글게)
+    backgroundColor: '#FFF4E8', // ← 안전망 (이론상 발생 안 하지만 보험)
   },
   photo: {
     width: '100%',
@@ -90,12 +100,12 @@ const styles: Record<string, React.CSSProperties> = {
   },
   scriptText: {
     fontFamily: "'Better Chill', cursive",
-    fontSize: '4rem', // ← "happily ever after" 글씨 크기
+    fontSize: '3rem', // ← "happily ever after" 글씨 크기
     fontWeight: 400, // ← 단일 굵기 폰트라 의미 없음. 굵기는 아래 WebkitTextStroke로 조절
     color: '#FF6B1A', // ← "happily ever after" 글씨 색상
     //'rgba(250, 247, 246, 0.7)',
     margin: -5,
-    letterSpacing: '2px',
+    letterSpacing: '0px',
     textShadow: '0 1px 6px rgba(0,0,0,0)',
     // ▼ 글자 굵기 미세 조정 (0.1px 단위로 가능)
     //   0px(원본) → 0.3px(살짝) → 0.6px(보통) → 1px(아주 굵게) → 1.5px(과하게)
@@ -109,15 +119,15 @@ const styles: Record<string, React.CSSProperties> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '12px',
-    marginBottom: '0px',
+    gap: '10px',
+    marginBottom: '-15px',
   },
   name: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '1.2rem', // ← 신랑/신부 이름 글씨 크기
-    fontWeight: 700,
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '1.5rem', // ← 신랑/신부 이름 글씨 크기
+    fontWeight: 500,
     color: '#FFFFFF', // ← 신랑/신부 이름 글씨 색상
-    letterSpacing: '1px',
+    letterSpacing: '5px',
     textShadow: '0 1px 8px rgba(0,0,0,0.4)',
   },
   ampersand: {
@@ -128,19 +138,19 @@ const styles: Record<string, React.CSSProperties> = {
     filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.3))',
   },
   dateText: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '0.85rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '1.25rem',
     color: 'rgba(255,255,255,0.9)',
     letterSpacing: '1px',
-    margin: '0 0 4px',
+    margin: '0 0 -15px',
     textShadow: '0 1px 6px rgba(0,0,0,0.4)',
   },
   venueText: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '0.85rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '1.25rem',
     color: 'rgba(255,255,255,0.85)',
     letterSpacing: '1px',
-    margin: 0,
+    margin: '0 0 -10px',
     textShadow: '0 1px 6px rgba(0,0,0,0.4)',
   },
 }

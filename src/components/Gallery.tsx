@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { weddingConfig } from '../config'
+
+const SWIPE_THRESHOLD = 50      // 좌우 스와이프로 인식되는 최소 거리(px)
+const TAP_MOVE_TOLERANCE = 10   // 이 이하의 움직임은 "탭"으로 처리
 
 const Lightbox = ({
   images,
@@ -15,6 +18,10 @@ const Lightbox = ({
   onPrev: () => void
   onNext: () => void
 }) => {
+  const touchStartX = useRef(0)
+  const touchStartY = useRef(0)
+  const dragMoved = useRef(false)
+
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     const handleKey = (e: KeyboardEvent) => {
@@ -29,8 +36,40 @@ const Lightbox = ({
     }
   }, [onClose, onPrev, onNext])
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+    dragMoved.current = false
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const dx = e.touches[0].clientX - touchStartX.current
+    if (Math.abs(dx) > TAP_MOVE_TOLERANCE) dragMoved.current = true
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    const dy = e.changedTouches[0].clientY - touchStartY.current
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      if (dx > 0) onPrev()
+      else onNext()
+    }
+  }
+
+  // 오버레이 탭 시(스와이프 아닌 경우만) 닫기
+  const handleOverlayClick = () => {
+    if (dragMoved.current) return
+    onClose()
+  }
+
   return createPortal(
-    <div style={lightboxStyles.overlay} onClick={onClose}>
+    <div
+      style={lightboxStyles.overlay}
+      onClick={handleOverlayClick}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <button style={lightboxStyles.closeBtn} onClick={onClose}>
         &times;
       </button>
@@ -40,6 +79,7 @@ const Lightbox = ({
           src={images[selectedIdx]}
           alt={`wedding photo ${selectedIdx + 1}`}
           style={lightboxStyles.image}
+          draggable={false}
         />
       </div>
 
@@ -107,8 +147,8 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: '#FFFFFF',
   },
   title: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '1.1rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '1.3rem',
     fontWeight: 400,
     color: '#3D3D3D',
     marginTop: '20px',
@@ -208,8 +248,8 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
   },
   counter: {
     color: '#9A9A9A',
-    fontSize: '0.9rem',
-    fontFamily: "'Gowun Batang', serif",
+    fontSize: '2rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
   },
 }
 

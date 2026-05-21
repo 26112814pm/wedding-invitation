@@ -24,6 +24,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Onglip Uiyeon';
+  src: url('/wedding-invitation/fonts/OnglipUiyeon.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -108,19 +116,9 @@ a {
   transform: translateY(0);
 }
 
-/* Simple line divider */
+/* Section divider — 가로선 제거 */
 .section-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 0;
-}
-
-.section-divider::before {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--color-divider);
+  display: none;
 }
 
 /* Autumn leaf falling animation */

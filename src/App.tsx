@@ -32,7 +32,7 @@ const App = () => {
     const alreadySubmitted = localStorage.getItem('rsvp_submitted')
     const todayDismissed = dismissedDate === new Date().toDateString()
     if (!alreadySubmitted && !todayDismissed) {
-      setTimeout(() => setShowRsvpPopup(true), 0)
+      setTimeout(() => setShowRsvpPopup(true), 800)
     }
     // 플로팅 버튼은 스크롤 시 표시
     setTimeout(() => setShowFloatingBtn(true), 100)
@@ -139,13 +139,13 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '28px',
     boxShadow: '0 4px 16px rgba(196, 114, 78, 0.4)',
     cursor: 'pointer',
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '0.85rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '1rem',
     letterSpacing: '1px',
     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
   },
   floatingText: {
-    fontFamily: "'Gowun Batang', serif",
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
     fontWeight: 400,
   },
 }

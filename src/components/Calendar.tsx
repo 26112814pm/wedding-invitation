@@ -100,8 +100,8 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: '#FFF4E8',
   },
   title: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '1.1rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '2rem',
     fontWeight: 400,
     color: '#3D3D3D',
     marginTop: '20px',
@@ -118,7 +118,7 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: '8px',
   },
   dayLabel: {
-    fontSize: '0.8rem',
+    fontSize: '2rem',
     fontWeight: 700,
     padding: '4px 0',
   },
@@ -134,7 +134,7 @@ const styles: Record<string, React.CSSProperties> = {
     width: '36px',
     height: '36px',
     margin: '0 auto',
-    fontSize: '0.9rem',
+    fontSize: '2rem',
     borderRadius: '50%',
   },
   weddingDay: {
@@ -146,8 +146,8 @@ const styles: Record<string, React.CSSProperties> = {
     marginTop: '24px',
   },
   ddayText: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '0.95rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '2rem',
     color: '#E89940',
     letterSpacing: '1px',
   },

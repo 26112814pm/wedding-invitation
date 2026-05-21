@@ -6,9 +6,21 @@ const Footer = () => {
   return (
     <footer style={styles.footer}>
       <div style={styles.copyright}>
-        <div style={{ width: '40px', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.3), transparent)' }} />
         <p style={styles.copyrightText}>
-          {groom.name} & {bride.name}
+          <span>{groom.name}</span>
+          <svg style={styles.heartSvg} width="22" height="20" viewBox="0 0 24 22" fill="none">
+            <defs>
+              <linearGradient id="ftDoubleHeart" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#FFB570" />
+                <stop offset="100%" stopColor="#E04E0F" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(10 2.4) scale(0.8)" opacity="0.7">
+              <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#ftDoubleHeart)" />
+            </g>
+            <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#ftDoubleHeart)" />
+          </svg>
+          <span>{bride.name}</span>
         </p>
       </div>
     </footer>
@@ -34,10 +46,16 @@ const styles: Record<string, React.CSSProperties> = {
     height: 'auto',
   },
   copyrightText: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '0.8rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '1.5rem',
     color: '#A87850',
     letterSpacing: '2px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+  },
+  heartSvg: {
+    flexShrink: 0,
   },
 }
 

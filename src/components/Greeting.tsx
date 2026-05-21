@@ -97,7 +97,6 @@ const Greeting = () => {
         ...styles.parentContactPanel,
         maxHeight: showParentContact ? '300px' : '0',
         opacity: showParentContact ? 1 : 0,
-        marginTop: showParentContact ? '0' : '0',
         overflow: 'hidden',
         transition: 'max-height 0.4s ease, opacity 0.3s ease',
       }}>
@@ -182,16 +181,16 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: '#FFFFFF',
   },
   title: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '1.3rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '2.5rem',
     fontWeight: 400,
     color: '#3D3D3D',
-    marginTop: '20px',
+    marginTop: '0px',
     marginBottom: '28px',
     letterSpacing: '4px',
   },
   message: {
-    fontSize: '0.95rem',
+    fontSize: '1.5rem',
     lineHeight: 2,
     color: '#5A5A5A',
     whiteSpace: 'pre-line',
@@ -199,17 +198,16 @@ const styles: Record<string, React.CSSProperties> = {
     wordBreak: 'keep-all',
   },
   familyCard: {
-    border: '1px solid #F8DEBC',
-    borderRadius: '12px',
-    padding: '20px 16px',
+    borderTop: '1px solid #F8DEBC',
+    borderBottom: '1px solid #F8DEBC',
+    padding: '8px 4px',
     marginBottom: '16px',
-    backgroundColor: '#FFF8EC',
   },
   familyRow: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '8px 0',
+    padding: '14px 0',
     gap: '8px',
   },
   parentNames: {
@@ -220,13 +218,13 @@ const styles: Record<string, React.CSSProperties> = {
     minWidth: 0,
   },
   parentName: {
-    fontSize: '0.85rem',
+    fontSize: '1.5rem',
     color: '#5A5A5A',
     whiteSpace: 'nowrap',
   },
   dot: {
     color: '#E89940',
-    fontSize: '0.85rem',
+    fontSize: '1.5rem',
   },
   roleAndName: {
     display: 'flex',
@@ -235,12 +233,12 @@ const styles: Record<string, React.CSSProperties> = {
     whiteSpace: 'nowrap',
   },
   role: {
-    fontSize: '0.8rem',
+    fontSize: '1.3rem',
     color: '#9A9A9A',
   },
   personName: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '1rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '1.5rem',
     color: '#3D3D3D',
     fontWeight: 600,
   },
@@ -280,17 +278,17 @@ const styles: Record<string, React.CSSProperties> = {
     margin: '8px 0',
   },
   deceased: {
-    fontSize: '0.75rem',
+    fontSize: '1.5rem',
     color: '#9A9A9A',
   },
   parentContactBtn: {
-    fontFamily: "'Gowun Batang', serif",
-    fontSize: '0.9rem',
+    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontSize: '1.3rem',
     color: '#E89940',
     backgroundColor: 'transparent',
     border: '1px solid #E89940',
     borderRadius: '24px',
-    padding: '10px 24px',
+    padding: '6px 20px',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
@@ -301,33 +299,33 @@ const styles: Record<string, React.CSSProperties> = {
   },
   arrow: {
     display: 'inline-block',
-    fontSize: '0.8rem',
+    fontSize: '1.3rem',
     transition: 'transform 0.3s ease',
   },
   parentContactPanel: {
+    backgroundColor: 'transparent',         // 배경 없음
+    border: '1px solid #F8DEBC',            // 베이지 보더만
     borderRadius: '12px',
-    padding: '0 16px',
-    backgroundColor: '#FFF8EC',
-    border: '1px solid #F8DEBC',
-    marginTop: '12px',
+    padding: '8px 20px',
+    marginTop: '10px',                      // 버튼과 박스 사이 간격
   },
   parentContactLabel: {
-    fontSize: '0.8rem',
+    fontSize: '1.5rem',
     color: '#E89940',
     fontWeight: 600,
     textAlign: 'left' as const,
-    marginTop: '14px',
-    marginBottom: '8px',
+    marginTop: '0px',
+    marginBottom: '0px',
     letterSpacing: '1px',
   },
   parentContactRow: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '6px 0',
+    padding: '0px 0',
   },
   parentContactName: {
-    fontSize: '0.85rem',
+    fontSize: '1.5rem',
     color: '#5A5A5A',
   },
 }
