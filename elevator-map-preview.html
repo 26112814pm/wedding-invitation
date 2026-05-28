@@ -20,10 +20,11 @@
       .card { background:#FFFFFF; border:1px solid #F8DEBC; border-radius:16px; padding:20px 14px; margin-bottom:36px; }
       .card-title { font-size:1.25rem; font-weight:700; text-align:center; margin-bottom:4px; }
       .card-desc { font-size:0.95rem; color:var(--muted); text-align:center; margin-bottom:14px; }
-      .legend { margin-top:16px; display:flex; flex-direction:column; gap:10px; }
-      .legend-item { display:flex; align-items:center; gap:10px; font-size:1.02rem; }
-      .badge { flex-shrink:0; width:26px; height:26px; border-radius:50%; background:var(--orange); color:#fff; font-weight:700; font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
-      .legend-item b { color:var(--text); } .legend-item span { color:var(--muted); }
+      .legend { margin-top:18px; display:flex; flex-direction:row; flex-wrap:wrap; gap:12px 16px; justify-content:flex-start; }
+      .legend-item { display:flex; align-items:center; gap:7px; font-size:0.95rem; }
+      /* 마커 크기 축소: 26px 원 + 흰 보더 + sans-serif 번호 */
+      .badge { flex-shrink:0; width:26px; height:26px; border-radius:50%; background:var(--orange); color:#fff; font-weight:700; font-size:13px; font-family:sans-serif; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 2px #fff, 0 0 0 3px var(--orange); }
+      .legend-item b { color:var(--text); }
     </style>
   </head>
   <body>
@@ -32,20 +33,20 @@
 
     <div class="container">
       <div class="card">
-        <div class="card-title">엘리베이터 이용 안내</div>
-        <div class="card-desc">입구마다 엘리베이터 1대 · 모두 8층 예식홀 연결</div>
+        <div class="card-title">약도</div>
+        <div class="card-desc">입구마다 엘리베이터 1대</div>
 
         <svg viewBox="0 0 600 470" width="100%" style="display:block;">
           <!-- ===== 주변 건물 (연한 베이지 블록) ===== -->
           <g font-family="'Onglip Uiyeon',serif" fill="#7A6E5B">
             <!-- 북: 분당제생병원 -->
             <rect x="130" y="20" width="420" height="74" rx="6" fill="#ECE3D0" stroke="#D9CDB2" stroke-width="1"/>
-            <text x="340" y="63" text-anchor="middle" font-size="20" font-weight="700">분당제생병원</text>
+            <text x="340" y="64" text-anchor="middle" font-size="24" font-weight="700">분당제생병원</text>
 
-            <!-- 서: 분당제일여성병원 -->
+            <!-- 서: 분당제일여성병원 (텍스트 우상단으로 이동) -->
             <rect x="20" y="115" width="85" height="220" rx="6" fill="#ECE3D0" stroke="#D9CDB2" stroke-width="1"/>
-            <text x="62" y="218" text-anchor="middle" font-size="14" font-weight="700">분당제일</text>
-            <text x="62" y="240" text-anchor="middle" font-size="14" font-weight="700">여성병원</text>
+            <text x="62" y="152" text-anchor="middle" font-size="24" font-weight="700">분당제일</text>
+            <text x="62" y="184" text-anchor="middle" font-size="24" font-weight="700">여성병원</text>
 
             <!-- 동: 작은 건물 2개 -->
             <rect x="475" y="115" width="85" height="100" rx="6" fill="#ECE3D0" stroke="#D9CDB2" stroke-width="1"/>
@@ -53,26 +54,25 @@
 
             <!-- 남: 분당 우체국 -->
             <rect x="130" y="355" width="320" height="74" rx="6" fill="#ECE3D0" stroke="#D9CDB2" stroke-width="1"/>
-            <text x="290" y="398" text-anchor="middle" font-size="20" font-weight="700">분당 우체국</text>
+            <text x="290" y="399" text-anchor="middle" font-size="24" font-weight="700">분당 우체국</text>
           </g>
 
           <!-- ===== 더메리든 건물 본체 (가로형, 강조) ===== -->
           <rect x="130" y="115" width="320" height="220" rx="12" fill="#FFF8EC" stroke="#FF6B1A" stroke-width="2.5"/>
 
-          <!-- 건물 내부 라벨 (PPT 위치 그대로) -->
+          <!-- 건물 내부 라벨 -->
           <g font-family="'Onglip Uiyeon',serif" fill="#5A5A5A">
             <!-- 상생약국 (북쪽 중앙 상단) -->
-            <text x="290" y="160" text-anchor="middle" font-size="15" font-weight="600">상생약국</text>
+            <text x="290" y="170" text-anchor="middle" font-size="24" font-weight="600">상생약국</text>
 
-            <!-- 더 메리든 (중앙 상단, PPT처럼 위쪽 영역) -->
-            <text x="290" y="212" text-anchor="middle" font-size="26" font-weight="700" fill="#3D3D3D">더 메리든</text>
-            <text x="290" y="232" text-anchor="middle" font-size="13" fill="#9A8568">예식홀 8층</text>
+            <!-- 더 메리든 (중앙) -->
+            <text x="290" y="232" text-anchor="middle" font-size="32" font-weight="700" fill="#3D3D3D">더 메리든</text>
 
-            <!-- 서현순대 (더 메리든 아래쪽 우측) -->
-            <text x="395" y="275" text-anchor="middle" font-size="15" font-weight="600">서현순대</text>
+            <!-- 서현순대 (더 메리든 아래쪽 우측, 좀 더 오른쪽) -->
+            <text x="420" y="288" text-anchor="middle" font-size="24" font-weight="600">서현순대</text>
 
             <!-- CGV (좌측 하단) -->
-            <text x="220" y="310" text-anchor="middle" font-size="15" font-weight="600">CGV</text>
+            <text x="220" y="320" text-anchor="middle" font-size="24" font-weight="600">CGV</text>
           </g>
 
           <!-- ===== 입구 마커 + 화살표 ===== -->
@@ -80,34 +80,29 @@
           <g>
             <line x1="290" y1="100" x2="290" y2="116" stroke="#FF6B1A" stroke-width="2.5" stroke-linecap="round"/>
             <polygon points="285,113 295,113 290,121" fill="#FF6B1A"/>
-            <circle cx="290" cy="115" r="16" fill="#FF6B1A" stroke="#fff" stroke-width="3"/>
-            <text x="290" y="121" text-anchor="middle" font-size="16" font-weight="700" fill="#fff" font-family="sans-serif">2</text>
+            <circle cx="290" cy="115" r="18" fill="#FF6B1A" stroke="#fff" stroke-width="3"/>
+            <text x="290" y="121" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="sans-serif">2</text>
           </g>
           <!-- ③ 동쪽 입구 (우측 변 중앙, 위치는 그대로 유지) -->
           <g>
             <line x1="465" y1="225" x2="452" y2="225" stroke="#FF6B1A" stroke-width="2.5" stroke-linecap="round"/>
             <polygon points="455,220 455,230 447,225" fill="#FF6B1A"/>
-            <circle cx="450" cy="225" r="16" fill="#FF6B1A" stroke="#fff" stroke-width="3"/>
-            <text x="450" y="231" text-anchor="middle" font-size="16" font-weight="700" fill="#fff" font-family="sans-serif">3</text>
+            <circle cx="450" cy="225" r="18" fill="#FF6B1A" stroke="#fff" stroke-width="3"/>
+            <text x="450" y="231" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="sans-serif">3</text>
           </g>
           <!-- ① 남쪽 입구 (하단 중앙, 아래에서 위로 화살표) -->
           <g>
             <line x1="290" y1="350" x2="290" y2="334" stroke="#FF6B1A" stroke-width="2.5" stroke-linecap="round"/>
             <polygon points="285,337 295,337 290,329" fill="#FF6B1A"/>
-            <circle cx="290" cy="335" r="16" fill="#FF6B1A" stroke="#fff" stroke-width="3"/>
-            <text x="290" y="341" text-anchor="middle" font-size="16" font-weight="700" fill="#fff" font-family="sans-serif">1</text>
+            <circle cx="290" cy="335" r="18" fill="#FF6B1A" stroke="#fff" stroke-width="3"/>
+            <text x="290" y="341" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" font-family="sans-serif">1</text>
           </g>
-
-          <!-- ===== 서현역 5번출구 마커 ===== -->
-          <circle cx="170" cy="455" r="18" fill="#F4C20D" stroke="#fff" stroke-width="2"/>
-          <text x="170" y="460" text-anchor="middle" font-size="11" font-weight="700" fill="#3D3D3D" font-family="'Onglip Uiyeon',serif">5번</text>
-          <text x="220" y="460" font-size="13" fill="#5A5A5A" font-family="'Onglip Uiyeon',serif">서현역 5번 출구</text>
         </svg>
 
         <div class="legend">
-          <div class="legend-item"><span class="badge">1</span><div><b>남쪽 입구</b> <span>· CGV 옆 (서현역 방향)</span></div></div>
-          <div class="legend-item"><span class="badge">2</span><div><b>북쪽 입구</b> <span>· 상생약국 입구</span></div></div>
-          <div class="legend-item"><span class="badge">3</span><div><b>동쪽 입구</b> <span>· 서현순대 옆 입구</span></div></div>
+          <div class="legend-item"><span class="badge">1</span><div><b>CGV 옆 입구</b></div></div>
+          <div class="legend-item"><span class="badge">2</span><div><b>상생약국 입구</b></div></div>
+          <div class="legend-item"><span class="badge">3</span><div><b>서현순대 옆 입구</b></div></div>
         </div>
       </div>
     </div>
