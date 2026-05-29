@@ -52,62 +52,30 @@ declare global {
 const Location = () => {
   const { location } = weddingConfig
   const mapRef = useRef<HTMLDivElement>(null)
-  const mapInstanceRef = useRef<any>(null)
-  const mapCenterRef = useRef<any>(null)
-  const initializedRef = useRef(false)
   const [showElevatorMap, setShowElevatorMap] = useState(false)
 
   useEffect(() => {
     if (!mapRef.current) return
-    // StrictMode에서 두 번 실행되어도 지도는 한 번만 생성
-    if (initializedRef.current) return
-    initializedRef.current = true
 
     const createMap = (position: any) => {
       if (!mapRef.current) return
-
       const map = new window.kakao.maps.Map(mapRef.current, {
         center: position,
         level: 3,
       })
-      mapInstanceRef.current = map
-      mapCenterRef.current = position
 
-      const marker = new window.kakao.maps.Marker({ position, map })
-      void marker
+      const marker = new window.kakao.maps.Marker({ position })
+      marker.setMap(map)
 
-      // CustomOverlay: "더메리든" 말풍선을 마커 핀 바로 위에 정렬
-      // 마커는 약 36px 높이로 position(핀 끝점)에서 위로 그려짐
-      // 아래쪽 42px spacer로 풍선이 마커 위쪽에 안착하도록 함
-      const content = `
-        <div style="display:flex;flex-direction:column;align-items:center;pointer-events:none;">
-          <div style="background:#ffffff;border:1.5px solid #E89940;border-radius:14px;padding:6px 14px;font-family:'Onglip Uiyeon','Gowun Batang',serif;font-size:14px;font-weight:700;color:#3D3D3D;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);line-height:1.2;">
-            더메리든
-          </div>
-          <div style="position:relative;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:7px solid #E89940;margin-top:-1px;"></div>
-          <div style="position:relative;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #ffffff;margin-top:-8px;"></div>
-          <div style="width:1px;height:42px;"></div>
-        </div>
-      `
-
+      // 마커 위 "더메리든" 말풍선
+      const content = `<div style="background:#ffffff;border:1.5px solid #E89940;border-radius:14px;padding:6px 14px;font-family:'Onglip Uiyeon','Gowun Batang',serif;font-size:14px;font-weight:700;color:#3D3D3D;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);line-height:1.2;">더메리든</div>`
       const overlay = new window.kakao.maps.CustomOverlay({
         position,
         content,
         xAnchor: 0.5,
-        yAnchor: 1,
+        yAnchor: 2.2,
       })
       overlay.setMap(map)
-
-      // 모바일에서 컨테이너 크기가 늦게 확정되거나 fade-in transform으로
-      // 초기 타일 계산이 어긋날 수 있어 명시적으로 relayout
-      const relayout = () => {
-        if (!mapInstanceRef.current) return
-        mapInstanceRef.current.relayout()
-        mapInstanceRef.current.setCenter(mapCenterRef.current)
-      }
-      requestAnimationFrame(relayout)
-      setTimeout(relayout, 300)
-      setTimeout(relayout, 1000)
     }
 
     const initMap = () => {
@@ -123,15 +91,18 @@ const Location = () => {
               const position = new window.kakao.maps.LatLng(place.y, place.x)
               createMap(position)
             } else {
+              // fallback: config 좌표 사용
               const position = new window.kakao.maps.LatLng(location.lat, location.lng)
               createMap(position)
             }
           })
         } else {
+          // services 라이브러리 미로드 시 fallback
           const position = new window.kakao.maps.LatLng(location.lat, location.lng)
           createMap(position)
         }
       } catch {
+        // 최종 fallback
         const position = new window.kakao.maps.LatLng(location.lat, location.lng)
         createMap(position)
       }
@@ -149,29 +120,6 @@ const Location = () => {
         }
       }, 200)
       setTimeout(() => clearInterval(check), 10000)
-    }
-
-    // section이 IntersectionObserver로 visible 클래스를 받으며 fade-in transform이
-    // 해제될 때 카카오맵 타일 크기가 다시 계산되도록 relayout 호출
-    const target = mapRef.current
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && mapInstanceRef.current) {
-            mapInstanceRef.current.relayout()
-            if (mapCenterRef.current) {
-              mapInstanceRef.current.setCenter(mapCenterRef.current)
-            }
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-    io.observe(target)
-
-    // StrictMode 안전: 지도 인스턴스는 파괴하지 않음. observer만 정리
-    return () => {
-      io.disconnect()
     }
   }, [])
 
