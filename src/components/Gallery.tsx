@@ -147,10 +147,10 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: '#FFFFFF',
   },
   title: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.3rem',
     fontWeight: 400,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     marginTop: '20px',
     marginBottom: '24px',
     letterSpacing: '4px',
@@ -195,7 +195,7 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
     width: '48px',
     height: '48px',
     borderRadius: '50%',
-    backgroundColor: '#FF6B1A',
+    backgroundColor: 'var(--color-primary)',
     color: '#FFFFFF',
     fontSize: '1.6rem',
     fontWeight: 300,
@@ -238,7 +238,7 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
     height: '48px',
     borderRadius: '50%',
     backgroundColor: 'rgba(201, 169, 110, 0.15)',
-    color: '#E89940',
+    color: 'var(--color-accent)',
     fontSize: '1.5rem',
     display: 'flex',
     alignItems: 'center',
@@ -247,9 +247,9 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
     cursor: 'pointer',
   },
   counter: {
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
     fontSize: '2rem',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
   },
 }
 

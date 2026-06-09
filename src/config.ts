@@ -32,7 +32,7 @@ export const weddingConfig = {
     name: '더메리든',
     hall: '8층',
     address: '경기 성남시 분당구 서현로180번길 19',
-    roadAddress: '경기 성남시 분당구 서현로180번길 19 비전월드 8층',
+    roadAddress: '경기 성남시 분당구 서현로180번길 19 비전월드',
     mapImageUrl: '',
     lat: 37.3855,
     lng: 127.1230,
@@ -42,10 +42,6 @@ export const weddingConfig = {
     transport: [
       { type: '지하철', detail: '수인분당선 서현역 5번 출구에서 도보 5분' },
       { type: '주차', detail: '건물 내 주차장 이용 가능 (2시간30분 무료)' },
-      {
-        type: '대절버스',
-        detail: '출발 장소: 서현역 1번 출구 앞\n출발 시간: 13:00',
-      },
     ],
     busStops: [
       {

@@ -20,7 +20,15 @@
       "Bash(ls \"C:\\\\Users\\\\USER\\\\Documents\\\\jjg\\\\github\\\\wedding-invitation\\\\node_modules\\\\.bin\\\\vite\"*)",
       "Bash(export PATH=\"$PATH:/c/Program Files/nodejs\")",
       "Bash(npm install:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(git add *)",
+      "Bash(curl -s -o nul -w \"%{http_code}\\\\n\" https://26112814pm.github.io/wedding-invitation/)",
+      "PowerShell($response = Invoke-WebRequest -Uri \"https://26112814pm.github.io/wedding-invitation/\" -UseBasicParsing; $response.StatusCode; $response.Content.Substring\\(0, [Math]::Min\\(2000, $response.Content.Length\\)\\))",
+      "Bash(git commit *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(cmdkey /list)",
+      "PowerShell(cmdkey /delete:git:https://github.com)"
     ]
   }
 }

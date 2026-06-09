@@ -8,7 +8,7 @@ interface RsvpEntry {
   side: string
   attending: boolean
   name: string
-  phone: string
+  message: string
   dining: boolean
   guestCount: number
   createdAt: Timestamp | null
@@ -57,13 +57,14 @@ const Admin = () => {
       '구분': r.side === 'groom' ? '신랑측' : '신부측',
       '참석여부': r.attending ? '참석' : '불참',
       '이름': r.name,
-      '연락처': r.phone,
       '식사여부': r.attending ? (r.dining ? '식사함' : '식사안함') : '-',
       '인원수': r.attending ? r.guestCount : 0,
       '등록일시': formatDate(r.createdAt),
+      '메시지': r.message || '',
     }))
     const ws = XLSX.utils.json_to_sheet(rows)
-    ws['!cols'] = [{ wch: 8 }, { wch: 8 }, { wch: 10 }, { wch: 15 }, { wch: 10 }, { wch: 8 }, { wch: 18 }]
+    ws['!cols'] = [{ wch: 8 }, { wch: 8 }, { wch: 10 }, { wch: 10 }, { wch: 8 }, { wch: 18 }, { wch: 40 }]
+    if (ws['!ref']) ws['!autofilter'] = { ref: ws['!ref'] } // 헤더 1행 필터
     const wb = XLSX.utils.book_new()
     XLSX.utils.book_append_sheet(wb, ws, 'RSVP')
     XLSX.writeFile(wb, `참석의사_${new Date().toISOString().slice(0, 10)}.xlsx`)
@@ -77,6 +78,7 @@ const Admin = () => {
     }))
     const ws = XLSX.utils.json_to_sheet(rows)
     ws['!cols'] = [{ wch: 10 }, { wch: 40 }, { wch: 18 }]
+    if (ws['!ref']) ws['!autofilter'] = { ref: ws['!ref'] } // 헤더 1행 필터
     const wb = XLSX.utils.book_new()
     XLSX.utils.book_append_sheet(wb, ws, '방명록')
     XLSX.writeFile(wb, `방명록_${new Date().toISOString().slice(0, 10)}.xlsx`)
@@ -163,10 +165,10 @@ const Admin = () => {
                   <th style={s.th}>구분</th>
                   <th style={s.th}>참석</th>
                   <th style={s.th}>이름</th>
-                  <th style={s.th}>연락처</th>
                   <th style={s.th}>식사</th>
                   <th style={s.th}>인원</th>
                   <th style={s.th}>일시</th>
+                  <th style={s.th}>메시지</th>
                 </tr>
               </thead>
               <tbody>
@@ -177,10 +179,10 @@ const Admin = () => {
                       {r.attending ? 'O' : 'X'}
                     </td>
                     <td style={s.td}>{r.name}</td>
-                    <td style={s.td}>{r.phone}</td>
                     <td style={s.td}>{r.attending ? (r.dining ? 'O' : 'X') : '-'}</td>
                     <td style={s.td}>{r.attending ? r.guestCount : '-'}</td>
                     <td style={{ ...s.td, fontSize: '0.7rem' }}>{formatDate(r.createdAt)}</td>
+                    <td style={{ ...s.td, textAlign: 'left', whiteSpace: 'normal', minWidth: '160px' }}>{r.message || '-'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -200,9 +202,9 @@ const Admin = () => {
               <div key={g.id} style={s.guestCard}>
                 <div style={s.guestHeader}>
                   <strong>{g.name}</strong>
-                  <span style={{ fontSize: '0.7rem', color: '#9A9A9A' }}>{formatDate(g.createdAt)}</span>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--color-text-light)' }}>{formatDate(g.createdAt)}</span>
                 </div>
-                <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#5A5A5A' }}>{g.message}</p>
+                <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'var(--color-text)' }}>{g.message}</p>
               </div>
             ))}
           </div>
@@ -218,7 +220,7 @@ const s: Record<string, React.CSSProperties> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFF4E8',
+    backgroundColor: 'var(--color-bg)',
     padding: '20px',
   },
   loginCard: {
@@ -233,7 +235,7 @@ const s: Record<string, React.CSSProperties> = {
   loginTitle: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.2rem',
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     marginBottom: '24px',
     letterSpacing: '3px',
   },
@@ -243,7 +245,7 @@ const s: Record<string, React.CSSProperties> = {
     fontSize: '0.9rem',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#F5D9B8',
+    borderColor: 'var(--color-divider)',
     borderRadius: '8px',
     marginBottom: '12px',
     outline: 'none',
@@ -255,7 +257,7 @@ const s: Record<string, React.CSSProperties> = {
     padding: '14px',
     fontSize: '0.95rem',
     color: '#FFFFFF',
-    backgroundColor: '#FF6B1A',
+    backgroundColor: 'var(--color-primary)',
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
@@ -265,13 +267,13 @@ const s: Record<string, React.CSSProperties> = {
     maxWidth: '700px',
     margin: '0 auto',
     padding: '24px 16px',
-    backgroundColor: '#FFF4E8',
+    backgroundColor: 'var(--color-bg)',
     minHeight: '100vh',
   },
   pageTitle: {
     fontFamily: "'Gowun Batang', serif",
     fontSize: '1.3rem',
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     textAlign: 'center',
     marginBottom: '20px',
     letterSpacing: '3px',
@@ -288,15 +290,15 @@ const s: Record<string, React.CSSProperties> = {
     backgroundColor: '#FFFFFF',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#F5D9B8',
+    borderColor: 'var(--color-divider)',
     borderRadius: '8px',
     cursor: 'pointer',
-    color: '#5A5A5A',
+    color: 'var(--color-text)',
     fontFamily: "'Noto Serif KR', serif",
   },
   tabActive: {
-    backgroundColor: '#FF6B1A',
-    borderColor: '#FF6B1A',
+    backgroundColor: 'var(--color-primary)',
+    borderColor: 'var(--color-primary)',
     color: '#FFFFFF',
   },
   summary: {
@@ -314,13 +316,13 @@ const s: Record<string, React.CSSProperties> = {
   summaryLabel: {
     display: 'block',
     fontSize: '0.7rem',
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
     marginBottom: '4px',
   },
   summaryValue: {
     fontSize: '1.1rem',
     fontWeight: 700,
-    color: '#FF6B1A',
+    color: 'var(--color-primary)',
   },
   exportBtn: {
     width: '100%',
@@ -347,8 +349,8 @@ const s: Record<string, React.CSSProperties> = {
   },
   th: {
     padding: '10px 6px',
-    backgroundColor: '#FFF4E8',
-    color: '#9A9A9A',
+    backgroundColor: 'var(--color-bg)',
+    color: 'var(--color-text-light)',
     fontWeight: 600,
     fontSize: '0.75rem',
     borderBottom: '1px solid #F5D9B8',

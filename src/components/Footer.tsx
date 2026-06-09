@@ -33,7 +33,7 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center',
     maxWidth: '480px',
     margin: '0 auto',
-    backgroundColor: '#FFF4E8',
+    backgroundColor: 'var(--color-bg)',
   },
   copyright: {
     display: 'flex',
@@ -46,7 +46,7 @@ const styles: Record<string, React.CSSProperties> = {
     height: 'auto',
   },
   copyrightText: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.5rem',
     color: '#A87850',
     letterSpacing: '2px',

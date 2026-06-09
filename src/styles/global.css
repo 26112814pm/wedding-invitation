@@ -1,22 +1,6 @@
 @import './variables.css';
 
 @font-face {
-  font-family: 'Brooke Smith Script';
-  src: url('/wedding-invitation/fonts/BrookeSmithScript.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'La Monarchie';
-  src: url('/wedding-invitation/fonts/LaMonarchieDeSaintOmbre.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Better Chill';
   src: url('/wedding-invitation/fonts/BetterChill.otf') format('opentype');
   font-weight: 400;
@@ -26,7 +10,7 @@
 
 @font-face {
   font-family: 'Onglip Uiyeon';
-  src: url('/wedding-invitation/fonts/OnglipUiyeon.ttf') format('truetype');
+  src: url('/wedding-invitation/fonts/OnglipUiyeon.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;

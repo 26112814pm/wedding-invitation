@@ -61,7 +61,7 @@ const styles: Record<string, React.CSSProperties> = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#FFF4E8',
+    backgroundColor: 'var(--color-bg)',
     position: 'relative',
     overflow: 'hidden',
     padding: '16px 0px 24px 0px', // ← 상 우 하 좌 여백
@@ -72,7 +72,7 @@ const styles: Record<string, React.CSSProperties> = {
     position: 'relative',
     overflow: 'hidden',
     borderRadius: '0px', // ← 사진 모서리 둥글기 (0px=각진, 8px=약간 둥글게)
-    backgroundColor: '#FFF4E8', // ← 안전망 (이론상 발생 안 하지만 보험)
+    backgroundColor: 'var(--color-bg)', // ← 안전망 (이론상 발생 안 하지만 보험)
   },
   photo: {
     width: '100%',
@@ -102,7 +102,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: "'Better Chill', cursive",
     fontSize: '3rem', // ← "happily ever after" 글씨 크기
     fontWeight: 400, // ← 단일 굵기 폰트라 의미 없음. 굵기는 아래 WebkitTextStroke로 조절
-    color: '#FF6B1A', // ← "happily ever after" 글씨 색상
+    color: 'var(--color-primary)', // ← "happily ever after" 글씨 색상
     //'rgba(250, 247, 246, 0.7)',
     margin: -5,
     letterSpacing: '0px',
@@ -123,7 +123,7 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: '-15px',
   },
   name: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.5rem', // ← 신랑/신부 이름 글씨 크기
     fontWeight: 500,
     color: '#FFFFFF', // ← 신랑/신부 이름 글씨 색상
@@ -138,7 +138,7 @@ const styles: Record<string, React.CSSProperties> = {
     filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.3))',
   },
   dateText: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.25rem',
     color: 'rgba(255,255,255,0.9)',
     letterSpacing: '1px',
@@ -146,7 +146,7 @@ const styles: Record<string, React.CSSProperties> = {
     textShadow: '0 1px 6px rgba(0,0,0,0.4)',
   },
   venueText: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.25rem',
     color: 'rgba(255,255,255,0.85)',
     letterSpacing: '1px',

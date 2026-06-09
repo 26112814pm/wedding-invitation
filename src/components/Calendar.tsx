@@ -45,7 +45,7 @@ const Calendar = () => {
           {dayLabels.map((label, i) => (
             <span key={i} style={{
               ...styles.dayLabel,
-              color: i === 0 ? '#FF6B1A' : i === 6 ? '#6B9BD2' : '#9A9A9A',
+              color: i === 0 ? 'var(--color-primary)' : i === 6 ? '#6B9BD2' : 'var(--color-text-light)',
             }}>
               {label}
             </span>
@@ -65,10 +65,10 @@ const Calendar = () => {
                   color: isWeddingDay
                     ? '#FFFFFF'
                     : dayOfWeek === 0
-                    ? '#FF6B1A'
+                    ? 'var(--color-primary)'
                     : dayOfWeek === 6
                     ? '#6B9BD2'
-                    : '#5A5A5A',
+                    : 'var(--color-text)',
                 }}
               >
                 {day || ''}
@@ -97,13 +97,13 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center',
     maxWidth: '480px',
     margin: '0 auto',
-    backgroundColor: '#FFF4E8',
+    backgroundColor: 'var(--color-bg)',
   },
   title: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '2rem',
     fontWeight: 400,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     marginTop: '20px',
     marginBottom: '24px',
     letterSpacing: '2px',
@@ -138,7 +138,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
   },
   weddingDay: {
-    backgroundColor: '#FF6B1A',
+    backgroundColor: 'var(--color-primary)',
     color: '#FFFFFF',
     fontWeight: 700,
   },
@@ -146,9 +146,9 @@ const styles: Record<string, React.CSSProperties> = {
     marginTop: '24px',
   },
   ddayText: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '2rem',
-    color: '#E89940',
+    color: 'var(--color-accent)',
     letterSpacing: '1px',
   },
 }

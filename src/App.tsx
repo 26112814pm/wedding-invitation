@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, lazy, Suspense } from 'react'
 import Intro from './components/Intro'
 import MainVisual from './components/MainVisual'
 import Greeting from './components/Greeting'
@@ -9,8 +9,10 @@ import Location from './components/Location'
 import Guestbook from './components/Guestbook'
 import Account from './components/Account'
 import Footer from './components/Footer'
-import Admin from './components/Admin'
 import RsvpModal from './components/RsvpModal'
+
+// 관리자 페이지(#admin)는 xlsx 라이브러리를 쓰므로 lazy load → 일반 하객 번들에서 분리
+const Admin = lazy(() => import('./components/Admin'))
 
 const App = () => {
   const [showIntro, setShowIntro] = useState(true)
@@ -73,7 +75,11 @@ const App = () => {
     return () => observer.disconnect()
   }, [showIntro, isAdmin])
 
-  if (isAdmin) return <Admin />
+  if (isAdmin) return (
+    <Suspense fallback={<div style={{ padding: '40px', textAlign: 'center', color: '#9A9A9A' }}>불러오는 중...</div>}>
+      <Admin />
+    </Suspense>
+  )
 
   return (
     <>

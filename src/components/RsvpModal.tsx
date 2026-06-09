@@ -45,6 +45,16 @@ const RsvpModal = ({ isOpen, onClose }: RsvpModalProps) => {
 
   if (!isOpen) return null
 
+  // config.date에서 날짜/시간 문자열 자동 생성
+  const d = new Date(weddingConfig.date)
+  const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][d.getDay()]
+  const hours = d.getHours()
+  const minutes = d.getMinutes()
+  const period = hours < 12 ? '오전' : hours === 12 ? '낮' : '오후'
+  const displayHour = hours > 12 ? hours - 12 : hours
+  const timeStr = `${period} ${displayHour}시${minutes > 0 ? ` ${minutes}분` : ''}`
+  const dateTimeStr = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')} ${dayOfWeek}요일 ${timeStr}`
+
   const handleSubmit = async () => {
     if (!name.trim()) {
       alert('이름을 입력해주세요.')
@@ -88,7 +98,7 @@ const RsvpModal = ({ isOpen, onClose }: RsvpModalProps) => {
 
         {/* 날짜/시간/장소 정보 */}
         <div style={s.infoBox}>
-          <p style={s.infoLine}>2026.11.28 토요일 오후 2시</p>
+          <p style={s.infoLine}>{dateTimeStr}</p>
           <p style={s.infoLine}>{weddingConfig.location.name}</p>
         </div>
 
@@ -249,21 +259,21 @@ const s: Record<string, React.CSSProperties> = {
     height: '36px',
     borderRadius: '50%',
     backgroundColor: 'transparent',
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
     fontSize: '1.4rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#F5D9B8',
+    borderColor: 'var(--color-divider)',
     cursor: 'pointer',
   },
   title: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '2rem',
     fontWeight: 400,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     textAlign: 'center',
     marginBottom: '16px',
     letterSpacing: '3px',
@@ -277,18 +287,18 @@ const s: Record<string, React.CSSProperties> = {
   },
   infoLine: {
     fontSize: '1.5rem',
-    color: '#5A5A5A',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    color: 'var(--color-text)',
+    fontFamily: "var(--font-display)",
     margin: '4px 0',
     letterSpacing: '1px',
   },
   label: {
     display: 'block',
     fontSize: '1.25rem',
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
     marginBottom: '8px',
     marginTop: '16px',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
   },
   toggleRow: {
     display: 'flex',
@@ -298,32 +308,32 @@ const s: Record<string, React.CSSProperties> = {
     flex: 1,
     padding: '12px',
     fontSize: '1.25rem',
-    color: '#5A5A5A',
-    backgroundColor: '#FFF4E8',
+    color: 'var(--color-text)',
+    backgroundColor: 'var(--color-bg)',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#F5D9B8',
+    borderColor: 'var(--color-divider)',
     borderRadius: '8px',
     cursor: 'pointer',
-    fontFamily: "'Onglip Uiyeon', 'Noto Serif KR', serif",
+    fontFamily: "var(--font-serif)",
     transition: 'all 0.2s ease',
   },
   toggleActive: {
-    backgroundColor: '#FF6B1A',
-    borderColor: '#FF6B1A',
+    backgroundColor: 'var(--color-primary)',
+    borderColor: 'var(--color-primary)',
     color: '#FFFFFF',
   },
   input: {
     width: '100%',
     padding: '12px 14px',
     fontSize: '1.25rem',
-    color: '#3D3D3D',
-    backgroundColor: '#FFF4E8',
+    color: 'var(--color-text-dark)',
+    backgroundColor: 'var(--color-bg)',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#F5D9B8',
+    borderColor: 'var(--color-divider)',
     borderRadius: '8px',
-    fontFamily: "'Onglip Uiyeon', 'Noto Serif KR', serif",
+    fontFamily: "var(--font-serif)",
     outline: 'none',
     boxSizing: 'border-box',
   },
@@ -337,12 +347,12 @@ const s: Record<string, React.CSSProperties> = {
     width: '40px',
     height: '40px',
     borderRadius: '50%',
-    backgroundColor: '#FFF4E8',
+    backgroundColor: 'var(--color-bg)',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#F5D9B8',
+    borderColor: 'var(--color-divider)',
     fontSize: '1.5rem',
-    color: '#FF6B1A',
+    color: 'var(--color-primary)',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
@@ -351,10 +361,10 @@ const s: Record<string, React.CSSProperties> = {
   counterValue: {
     fontSize: '1.5rem',
     fontWeight: 700,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     minWidth: '40px',
     textAlign: 'center',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
   },
   submitBtn: {
     width: '100%',
@@ -362,11 +372,11 @@ const s: Record<string, React.CSSProperties> = {
     marginTop: '28px',
     fontSize: '1.5rem',
     color: '#FFFFFF',
-    backgroundColor: '#FF6B1A',
+    backgroundColor: 'var(--color-primary)',
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     letterSpacing: '2px',
   },
   dismissBtn: {
@@ -374,11 +384,11 @@ const s: Record<string, React.CSSProperties> = {
     padding: '12px',
     marginTop: '10px',
     fontSize: '1.2rem',
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
     backgroundColor: 'transparent',
     border: 'none',
     cursor: 'pointer',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     letterSpacing: '1px',
     textDecoration: 'underline',
     textUnderlineOffset: '3px',

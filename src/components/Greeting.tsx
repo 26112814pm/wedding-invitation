@@ -181,10 +181,10 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: '#FFFFFF',
   },
   title: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '2.5rem',
     fontWeight: 400,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     marginTop: '0px',
     marginBottom: '28px',
     letterSpacing: '4px',
@@ -192,7 +192,7 @@ const styles: Record<string, React.CSSProperties> = {
   message: {
     fontSize: '1.5rem',
     lineHeight: 2,
-    color: '#5A5A5A',
+    color: 'var(--color-text)',
     whiteSpace: 'pre-line',
     marginBottom: '36px',
     wordBreak: 'keep-all',
@@ -219,11 +219,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
   parentName: {
     fontSize: '1.5rem',
-    color: '#5A5A5A',
+    color: 'var(--color-text)',
     whiteSpace: 'nowrap',
   },
   dot: {
-    color: '#E89940',
+    color: 'var(--color-accent)',
     fontSize: '1.5rem',
   },
   roleAndName: {
@@ -234,12 +234,12 @@ const styles: Record<string, React.CSSProperties> = {
   },
   role: {
     fontSize: '1.3rem',
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
   },
   personName: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.5rem',
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     fontWeight: 600,
   },
   contactIcons: {
@@ -279,12 +279,12 @@ const styles: Record<string, React.CSSProperties> = {
   },
   deceased: {
     fontSize: '1.5rem',
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
   },
   parentContactBtn: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.3rem',
-    color: '#E89940',
+    color: 'var(--color-accent)',
     backgroundColor: 'transparent',
     border: '1px solid #E89940',
     borderRadius: '24px',
@@ -311,7 +311,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   parentContactLabel: {
     fontSize: '1.5rem',
-    color: '#E89940',
+    color: 'var(--color-accent)',
     fontWeight: 600,
     textAlign: 'left' as const,
     marginTop: '0px',
@@ -326,7 +326,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   parentContactName: {
     fontSize: '1.5rem',
-    color: '#5A5A5A',
+    color: 'var(--color-text)',
   },
 }
 

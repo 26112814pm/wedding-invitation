@@ -9,7 +9,7 @@ const BusStopIcon = ({ type }: { type: string }) => {
     height: 22,
     viewBox: '0 0 24 24',
     fill: 'none' as const,
-    stroke: '#3D3D3D',
+    stroke: 'var(--color-text-dark)',
     strokeWidth: 1.5,
     strokeLinecap: 'round' as const,
     strokeLinejoin: 'round' as const,
@@ -66,16 +66,6 @@ const Location = () => {
 
       const marker = new window.kakao.maps.Marker({ position })
       marker.setMap(map)
-
-      // 마커 위 "더메리든" 말풍선
-      const content = `<div style="background:#ffffff;border:1.5px solid #E89940;border-radius:14px;padding:6px 14px;font-family:'Onglip Uiyeon','Gowun Batang',serif;font-size:14px;font-weight:700;color:#3D3D3D;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);line-height:1.2;">더메리든</div>`
-      const overlay = new window.kakao.maps.CustomOverlay({
-        position,
-        content,
-        xAnchor: 0.5,
-        yAnchor: 2.2,
-      })
-      overlay.setMap(map)
     }
 
     const initMap = () => {
@@ -224,13 +214,13 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center',
     maxWidth: '480px',
     margin: '0 auto',
-    backgroundColor: '#FFF4E8',
+    backgroundColor: 'var(--color-bg)',
   },
   title: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '2rem',
     fontWeight: 400,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     marginTop: '0px',
     marginBottom: '20px',
     letterSpacing: '4px',
@@ -239,31 +229,31 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: '20px',
   },
   venueName: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.7rem',
     fontWeight: 700,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     marginBottom: '-10px',
   },
   venueHall: {
     fontSize: '1.7rem',
-    color: '#5A5A5A',
+    color: 'var(--color-text)',
     marginBottom: '-10px',
   },
   address: {
     fontSize: '1.7rem',
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
     marginBottom: '0px',
   },
   copyBtn: {
     fontSize: '1.3rem',
-    color: '#E89940',
+    color: 'var(--color-accent)',
     backgroundColor: 'transparent',
     border: '1px solid #E89940',
     borderRadius: '12px',
     padding: '4px 14px',
     cursor: 'pointer',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
   },
   kakaoMap: {
     width: '100%',
@@ -295,7 +285,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   mapLabel: {
     fontSize: '1.5rem',
-    color: '#5A5A5A',
+    color: 'var(--color-text)',
     whiteSpace: 'nowrap',
   },
   mapModalBtn: {
@@ -306,12 +296,12 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '12px 16px',
     fontSize: '1.1rem',
     fontWeight: 600,
-    color: '#E89940',
+    color: 'var(--color-accent)',
     backgroundColor: 'transparent',
     border: '1px solid #E89940',
     borderRadius: '12px',
     cursor: 'pointer',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     marginBottom: '20px',
   },
   transport: {
@@ -330,12 +320,12 @@ const styles: Record<string, React.CSSProperties> = {
   transportType: {
     flexShrink: 0,
     fontWeight: 700,
-    color: '#E89940',
+    color: 'var(--color-accent)',
     minWidth: '70px',               // 4글자 라벨(대절버스)도 한 줄에 들어가도록
     whiteSpace: 'nowrap',
   },
   transportDetail: {
-    color: '#5A5A5A',
+    color: 'var(--color-text)',
     whiteSpace: 'pre-line',         // \n을 줄바꿈으로 렌더링
   },
   busStopsList: {
@@ -355,19 +345,19 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: 'center',
     gap: '8px',
     fontWeight: 700,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
   },
   busStopName: {
     fontSize: '1.5rem',
   },
   busRoutes: {
     fontSize: '1.5rem',
-    color: '#5A5A5A',
+    color: 'var(--color-text)',
     paddingLeft: '30px',
     lineHeight: 1.5,
   },
   busRouteLabel: {
-    color: '#E89940',
+    color: 'var(--color-accent)',
     fontWeight: 700,
     marginRight: '6px',
   },

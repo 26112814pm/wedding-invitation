@@ -37,17 +37,17 @@ const ElevatorMapModal = ({ isOpen, onClose }: Props) => {
             {/* 주변 건물 */}
             <g fontFamily="'Onglip Uiyeon', serif" fill="#7A6E5B">
               <rect x="130" y="20" width="420" height="74" rx="6" fill="#ECE3D0" stroke="#D9CDB2" strokeWidth="1" />
-              <text x="340" y="64" textAnchor="middle" fontSize="22" fontWeight="700">분당제생병원</text>
+              <text x="340" y="64" textAnchor="middle" fontSize="28" fontWeight="700">분당제생병원</text>
 
               <rect x="20" y="115" width="85" height="220" rx="6" fill="#ECE3D0" stroke="#D9CDB2" strokeWidth="1" />
-              <text x="62" y="150" textAnchor="middle" fontSize="20" fontWeight="700">분당제일</text>
-              <text x="62" y="178" textAnchor="middle" fontSize="20" fontWeight="700">여성병원</text>
+              <text x="62" y="150" textAnchor="middle" fontSize="28" fontWeight="700">분당제일</text>
+              <text x="62" y="178" textAnchor="middle" fontSize="28" fontWeight="700">여성병원</text>
 
               <rect x="475" y="115" width="85" height="100" rx="6" fill="#ECE3D0" stroke="#D9CDB2" strokeWidth="1" />
               <rect x="475" y="235" width="85" height="100" rx="6" fill="#ECE3D0" stroke="#D9CDB2" strokeWidth="1" />
 
               <rect x="130" y="355" width="320" height="60" rx="6" fill="#ECE3D0" stroke="#D9CDB2" strokeWidth="1" />
-              <text x="290" y="392" textAnchor="middle" fontSize="22" fontWeight="700">분당 우체국</text>
+              <text x="290" y="392" textAnchor="middle" fontSize="28" fontWeight="700">분당 우체국</text>
             </g>
 
             {/* 메인 건물 */}
@@ -55,10 +55,10 @@ const ElevatorMapModal = ({ isOpen, onClose }: Props) => {
 
             {/* 건물 내부 라벨 */}
             <g fontFamily="'Onglip Uiyeon', serif" fill="#5A5A5A">
-              <text x="290" y="158" textAnchor="middle" fontSize="22" fontWeight="600">상생약국</text>
-              <text x="290" y="232" textAnchor="middle" fontSize="30" fontWeight="700" fill="#3D3D3D">더 메리든</text>
-              <text x="420" y="288" textAnchor="middle" fontSize="22" fontWeight="600">서현순대</text>
-              <text x="220" y="320" textAnchor="middle" fontSize="22" fontWeight="600">CGV</text>
+              <text x="290" y="158" textAnchor="middle" fontSize="28" fontWeight="600">상생약국</text>
+              <text x="290" y="232" textAnchor="middle" fontSize="32" fontWeight="700" fill="#3D3D3D">더 메리든</text>
+              <text x="410" y="288" textAnchor="middle" fontSize="28  " fontWeight="600">서현순대</text>
+              <text x="220" y="320" textAnchor="middle" fontSize="28" fontWeight="600">CGV</text>
             </g>
 
             {/* 입구 마커 */}
@@ -137,7 +137,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
     backgroundColor: 'transparent',
     border: '1px solid #E0D6C4',
-    color: '#9A9A9A',
+    color: 'var(--color-text-light)',
     fontSize: '1.4rem',
     cursor: 'pointer',
     display: 'flex',
@@ -147,17 +147,17 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: 1,
   },
   title: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
-    fontSize: '1.5rem',
+    fontFamily: "var(--font-display)",
+    fontSize: '2rem',
     fontWeight: 700,
-    color: '#3D3D3D',
+    color: 'var(--color-text-dark)',
     textAlign: 'center',
     margin: '0 0 4px',
   },
   desc: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
-    fontSize: '22px',
-    color: '#9A9A9A',
+    fontFamily: "var(--font-display)",
+    fontSize: '28px',
+    color: 'var(--color-text-light)',
     textAlign: 'center',
     margin: '0 0 16px',
     lineHeight: 1.4,
@@ -177,14 +177,14 @@ const styles: Record<string, React.CSSProperties> = {
     display: 'flex',
     alignItems: 'center',
     gap: '7px',
-    fontSize: '0.95rem',
+    fontSize: '1.5rem',
   },
   badge: {
     flexShrink: 0,
     width: '26px',
     height: '26px',
     borderRadius: '50%',
-    backgroundColor: '#FF6B1A',
+    backgroundColor: 'var(--color-primary)',
     color: '#fff',
     fontWeight: 700,
     fontSize: '13px',
@@ -195,8 +195,8 @@ const styles: Record<string, React.CSSProperties> = {
     boxShadow: '0 0 0 2px #fff, 0 0 0 3px #FF6B1A',
   },
   legendLabel: {
-    color: '#3D3D3D',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    color: 'var(--color-text-dark)',
+    fontFamily: "var(--font-display)",
   },
 }
 
