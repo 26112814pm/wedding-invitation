@@ -31,6 +31,7 @@ export const weddingConfig = {
   location: {
     name: '더메리든',
     hall: '8층',
+    region: '경기도 성남시 분당구',   // 예식 안내에 표기되는 지역명
     address: '경기 성남시 분당구 서현로180번길 19',
     roadAddress: '경기 성남시 분당구 서현로180번길 19 비전월드',
     mapImageUrl: '',

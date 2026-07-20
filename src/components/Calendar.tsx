@@ -7,20 +7,38 @@ const Calendar = () => {
   const month = weddingDate.getMonth()
   const weddingDay = weddingDate.getDate()
 
-  const [dDay, setDDay] = useState(() => calculateDDay())
+  // 예식 안내용 날짜·시간 문자열
+  const weekday = ['일', '월', '화', '수', '목', '금', '토'][weddingDate.getDay()]
+  const hh = weddingDate.getHours()
+  const mm = weddingDate.getMinutes()
+  const period = hh < 12 ? '오전' : hh === 12 ? '낮' : '오후'
+  const displayHour = hh > 12 ? hh - 12 : hh
+  const timeStr = `${period} ${displayHour}시${mm > 0 ? ` ${mm}분` : ''}`
 
-  function calculateDDay() {
-    const now = new Date()
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-    const target = new Date(weddingDate.getFullYear(), weddingDate.getMonth(), weddingDate.getDate())
-    const diff = Math.round((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
-    return diff
+  // 예식 시작 시각(오후 2시) 기준으로 남은 시간 계산 — 초 단위까지
+  function calcRemaining() {
+    const diff = weddingDate.getTime() - Date.now()
+    if (diff <= 0) {
+      // 예식 시각이 지난 경우: 며칠 지났는지
+      return { passed: true, days: Math.floor(-diff / 86400000), hours: 0, minutes: 0, seconds: 0 }
+    }
+    return {
+      passed: false,
+      days: Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      minutes: Math.floor((diff % 3600000) / 60000),
+      seconds: Math.floor((diff % 60000) / 1000),
+    }
   }
 
+  const [remaining, setRemaining] = useState(calcRemaining)
+
   useEffect(() => {
-    const timer = setInterval(() => setDDay(calculateDDay()), 60000)
+    const timer = setInterval(() => setRemaining(calcRemaining()), 1000)
     return () => clearInterval(timer)
   }, [])
+
+  const pad = (n: number) => String(n).padStart(2, '0')
 
   // Build calendar grid
   const firstDay = new Date(year, month, 1).getDay()
@@ -36,6 +54,19 @@ const Calendar = () => {
   return (
     <section style={styles.section} className="fade-in">
       <div className="section-divider" />
+
+      {/* 예식 안내 */}
+      <div style={styles.infoBlock}>
+        <p style={styles.infoTitle}>예식 안내</p>
+        <p style={styles.infoLine}>
+          {year}년 {monthName}월 {weddingDay}일 {weekday}요일 {timeStr}
+        </p>
+        <p style={styles.infoLine}>
+          {weddingConfig.location.region} {weddingConfig.location.name}{' '}
+          {weddingConfig.location.hall}
+        </p>
+      </div>
+
       <h2 style={styles.title}>
         {year}년 {monthName}월
       </h2>
@@ -79,13 +110,21 @@ const Calendar = () => {
       </div>
 
       <div style={styles.dday}>
-        <p style={styles.ddayText}>
-          {dDay > 0
-            ? `결혼식까지 ${dDay}일 남았습니다`
-            : dDay === 0
-            ? '오늘 결혼합니다!'
-            : `결혼한 지 ${Math.abs(dDay)}일 되었습니다`}
-        </p>
+        {remaining.passed ? (
+          <p style={styles.ddayText}>
+            {remaining.days === 0
+              ? '오늘 결혼합니다!'
+              : `결혼한 지 ${remaining.days}일 되었습니다`}
+          </p>
+        ) : (
+          <>
+            <p style={styles.ddayLabel}>결혼식까지 남은 시간</p>
+            <p style={styles.ddayDays}>{remaining.days}일</p>
+            <p style={styles.ddayText}>
+              {pad(remaining.hours)}시간 {pad(remaining.minutes)}분 {pad(remaining.seconds)}초
+            </p>
+          </>
+        )}
       </div>
     </section>
   )
@@ -98,6 +137,27 @@ const styles: Record<string, React.CSSProperties> = {
     maxWidth: '480px',
     margin: '0 auto',
     backgroundColor: 'var(--color-bg)',
+  },
+  // 예식 안내 (달력 패널과 동일 배경 — 섹션 배경 상속)
+  infoBlock: {
+    textAlign: 'center',
+    marginTop: '20px',
+    marginBottom: '28px',
+  },
+  infoTitle: {
+    fontFamily: "var(--font-display)",
+    fontSize: '2rem',          // 달력 제목(2026년 11월)과 동일
+    color: 'var(--color-accent)',
+    letterSpacing: '4px',
+    marginBottom: '12px',
+  },
+  infoLine: {
+    fontFamily: "var(--font-display)",
+    fontSize: '1.7rem',          // 달력 제목과 동일
+    color: 'var(--color-text)',
+    letterSpacing: '1px',
+    lineHeight: 1.6,
+    margin: 0,
   },
   title: {
     fontFamily: "var(--font-display)",
@@ -145,11 +205,26 @@ const styles: Record<string, React.CSSProperties> = {
   dday: {
     marginTop: '24px',
   },
-  ddayText: {
+  ddayLabel: {
     fontFamily: "var(--font-display)",
-    fontSize: '2rem',
+    fontSize: '1.3rem',
+    color: 'var(--color-text-light)',
+    letterSpacing: '1px',
+    marginBottom: '4px',
+  },
+  ddayDays: {
+    fontFamily: "var(--font-display)",
+    fontSize: '2rem',          // 남은 일수 강조
     color: 'var(--color-accent)',
     letterSpacing: '1px',
+    whiteSpace: 'nowrap',
+  },
+  ddayText: {
+    fontFamily: "var(--font-display)",
+    fontSize: '2rem',          // 시·분·초 (일수와 동일 크기)
+    color: 'var(--color-accent)',
+    letterSpacing: '1px',
+    whiteSpace: 'nowrap',      // 좁은 화면에서도 한 줄 유지
   },
 }
 
