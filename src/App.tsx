@@ -145,13 +145,13 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '28px',
     boxShadow: '0 4px 16px rgba(196, 114, 78, 0.4)',
     cursor: 'pointer',
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
-    fontSize: '1rem',
+    fontFamily: "var(--font-display)",
+    fontSize: '0.85rem',
     letterSpacing: '1px',
     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
   },
   floatingText: {
-    fontFamily: "'Onglip Uiyeon', 'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontWeight: 400,
   },
 }

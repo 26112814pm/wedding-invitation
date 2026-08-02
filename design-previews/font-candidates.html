@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>폰트 초안 비교</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Gowun+Dodum&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet" />
+<style>
+  :root{
+    --primary:#FF6B1A; --accent:#E89940; --bg:#FFF4E8;
+    --text:#5A5A5A; --text-light:#9A9A9A; --text-dark:#3D3D3D; --divider:#F5D9B8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EFE7DC;padding:24px 12px;line-height:1.8;word-break:keep-all}
+  h1{font-family:'Pretendard',sans-serif;font-size:1.1rem;color:#3D3D3D;text-align:center;margin-bottom:6px}
+  .hint{font-family:'Pretendard',sans-serif;font-size:.8rem;color:#7A6E5B;text-align:center;margin-bottom:24px}
+  .row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+  .card{width:340px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.10)}
+  .cardhead{padding:12px 16px;background:#3D3D3D;color:#fff;font-family:'Pretendard',sans-serif}
+  .cardhead b{font-size:.95rem;letter-spacing:1px}
+  .cardhead span{display:block;font-size:.72rem;opacity:.75;margin-top:2px}
+
+  /* --- 청첩장 실제 구성 재현 --- */
+  .sect{padding:26px 22px;text-align:center}
+  .sect.cream{background:var(--bg)}
+  .names{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px}
+  .name{font-size:1.9rem;font-weight:600;color:var(--text-dark);letter-spacing:4px}
+  .heart{width:20px;height:18px;flex-shrink:0}
+  .sumline{font-size:1.05rem;color:var(--text);letter-spacing:1px}
+  .title{font-size:1.9rem;color:var(--text-dark);letter-spacing:4px;margin:22px 0 16px;font-weight:400}
+  .msg{font-size:1.02rem;line-height:2;color:var(--text);white-space:pre-line;margin-bottom:20px}
+  .famcard{border-top:1px solid #F8DEBC;border-bottom:1px solid #F8DEBC;padding:12px 4px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .parents{font-size:1rem;color:var(--text);white-space:nowrap}
+  .dot{color:var(--accent)}
+  .role{font-size:.9rem;color:var(--text-light);margin-right:6px}
+  .person{font-size:1.05rem;color:var(--text-dark);font-weight:600}
+  .infotitle{font-size:1.35rem;color:var(--accent);letter-spacing:4px;margin-bottom:8px}
+  .infoline{font-size:1.05rem;color:var(--text);letter-spacing:1px}
+  .dday{margin-top:14px}
+  .ddaylabel{font-size:.85rem;color:var(--text-light);letter-spacing:1px}
+  .ddaynum{font-size:1.5rem;color:var(--accent);letter-spacing:1px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:16px;padding:9px 18px;font-size:.95rem;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:22px;letter-spacing:2px}
+  .en{font-size:.8rem;color:var(--text-light);letter-spacing:2px;margin-top:10px}
+
+  /* 후보별 폰트 적용 */
+  #c1 .sect{font-family:'Nanum Myeongjo',serif}
+  #c2 .sect{font-family:'Gowun Dodum',sans-serif}
+  #c3 .sect{font-family:'Pretendard',-apple-system,sans-serif}
+</style>
+</head>
+<body>
+
+<h1>전체 폰트 교체 — 초안 3안</h1>
+<p class="hint">동일한 레이아웃에 폰트만 바꿔 적용했습니다. 마음에 드는 번호를 알려주세요.</p>
+
+<div class="row">
+
+  <!-- 1안 -->
+  <div class="card" id="c1">
+    <div class="cardhead"><b>1안 · 나눔명조</b><span>정갈한 명조체 — 전통적이고 격식 있는 청첩장 톤</span></div>
+    <div class="sect">
+      <div class="names">
+        <span class="name">장재균</span>
+        <svg class="heart" viewBox="0 0 18 22"><path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="#E8801A"/></svg>
+        <span class="name">배유빈</span>
+      </div>
+      <p class="sumline">2026.11.28 토요일 오후 2시</p>
+      <p class="sumline">더메리든 8층</p>
+      <h2 class="title">결혼합니다</h2>
+      <p class="msg">서로 다른 두 사람이 만나
+사랑으로 하나가 되려 합니다.</p>
+      <div class="famcard">
+        <span class="parents">장병국 <i class="dot">·</i> 김은미</span>
+        <span><i class="role">아들</i><b class="person">장재균</b></span>
+      </div>
+      <div class="btn">혼주에게 연락하기 ▾</div>
+    </div>
+    <div class="sect cream">
+      <p class="infotitle">예식 안내</p>
+      <p class="infoline">2026년 11월 28일 토요일 오후 2시</p>
+      <p class="infoline">경기도 성남시 분당구 더메리든 8층</p>
+      <div class="dday">
+        <p class="ddaylabel">결혼식까지 남은 시간</p>
+        <p class="ddaynum">118일</p>
+        <p class="ddaynum">07시간 24분 11초</p>
+      </div>
+      <p class="en">GROOM &amp; BRIDE · 010-3322-2306</p>
+    </div>
+  </div>
+
+  <!-- 2안 -->
+  <div class="card" id="c2">
+    <div class="cardhead"><b>2안 · 고운돋움</b><span>부드러운 고딕 — 담백하고 읽기 편한 모던 톤</span></div>
+    <div class="sect">
+      <div class="names">
+        <span class="name">장재균</span>
+        <svg class="heart" viewBox="0 0 18 22"><path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="#E8801A"/></svg>
+        <span class="name">배유빈</span>
+      </div>
+      <p class="sumline">2026.11.28 토요일 오후 2시</p>
+      <p class="sumline">더메리든 8층</p>
+      <h2 class="title">결혼합니다</h2>
+      <p class="msg">서로 다른 두 사람이 만나
+사랑으로 하나가 되려 합니다.</p>
+      <div class="famcard">
+        <span class="parents">장병국 <i class="dot">·</i> 김은미</span>
+        <span><i class="role">아들</i><b class="person">장재균</b></span>
+      </div>
+      <div class="btn">혼주에게 연락하기 ▾</div>
+    </div>
+    <div class="sect cream">
+      <p class="infotitle">예식 안내</p>
+      <p class="infoline">2026년 11월 28일 토요일 오후 2시</p>
+      <p class="infoline">경기도 성남시 분당구 더메리든 8층</p>
+      <div class="dday">
+        <p class="ddaylabel">결혼식까지 남은 시간</p>
+        <p class="ddaynum">118일</p>
+        <p class="ddaynum">07시간 24분 11초</p>
+      </div>
+      <p class="en">GROOM &amp; BRIDE · 010-3322-2306</p>
+    </div>
+  </div>
+
+  <!-- 3안 -->
+  <div class="card" id="c3">
+    <div class="cardhead"><b>3안 · Pretendard</b><span>가장 깔끔한 고딕 — 숫자·영문 정렬이 가장 정확</span></div>
+    <div class="sect">
+      <div class="names">
+        <span class="name">장재균</span>
+        <svg class="heart" viewBox="0 0 18 22"><path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="#E8801A"/></svg>
+        <span class="name">배유빈</span>
+      </div>
+      <p class="sumline">2026.11.28 토요일 오후 2시</p>
+      <p class="sumline">더메리든 8층</p>
+      <h2 class="title">결혼합니다</h2>
+      <p class="msg">서로 다른 두 사람이 만나
+사랑으로 하나가 되려 합니다.</p>
+      <div class="famcard">
+        <span class="parents">장병국 <i class="dot">·</i> 김은미</span>
+        <span><i class="role">아들</i><b class="person">장재균</b></span>
+      </div>
+      <div class="btn">혼주에게 연락하기 ▾</div>
+    </div>
+    <div class="sect cream">
+      <p class="infotitle">예식 안내</p>
+      <p class="infoline">2026년 11월 28일 토요일 오후 2시</p>
+      <p class="infoline">경기도 성남시 분당구 더메리든 8층</p>
+      <div class="dday">
+        <p class="ddaylabel">결혼식까지 남은 시간</p>
+        <p class="ddaynum">118일</p>
+        <p class="ddaynum">07시간 24분 11초</p>
+      </div>
+      <p class="en">GROOM &amp; BRIDE · 010-3322-2306</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

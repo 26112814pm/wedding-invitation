@@ -18,15 +18,15 @@ export const weddingConfig = {
     fatherDeceased: false,
     motherDeceased: false,
     phone: '010-7756-5340',
-    fatherPhone: '010-0000-0000',
-    motherPhone: '010-0000-0000',
+    fatherPhone: '010-2863-5340',
+    motherPhone: '010-2795-5340',
   },
   mainPhoto: '/wedding-invitation/images/main.jpg',
   date: '2026-11-28T14:00:00',
   greeting: {
     title: '결혼합니다',
     message:
-      '서로 다른 두 사람이 만나\n사랑으로 하나가 되려 합니다.\n\n저희 두 사람이 사랑의 이름으로\n지은 집에 함께 하시어\n축복해 주시면 감사하겠습니다.',
+      '여전히 같이 노는 게 누구보다 재밌고\n서로를 통해 함께하는 세상을 배워나갑니다.\n\n같은 하늘을 보고 서로를 노래하면서\n춤을 추고 부지런히 사랑하겠습니다.\n\n행복한 이 순간\n함께 해주시면 좋겠습니다.',
   },
   location: {
     name: '더메리든',
@@ -43,39 +43,23 @@ export const weddingConfig = {
     transport: [
       { type: '지하철', detail: '수인분당선 서현역 5번 출구에서 도보 5분' },
       { type: '주차', detail: '건물 내 주차장 이용 가능 (2시간30분 무료)' },
-      { type: '대절버스', detail: '출발 장소: 서현역 1번 출구 앞\n출발 시간: 13:00' },
-    ],
-    busStops: [
       {
-        icon: 'apartment',
-        name: '이매촌(한신아파트 앞)',
-        express: '1151, 1500-2, 3330, 3500, 5500-1, 8106, 9000, 9401, 9403',
-        local: '33, 303, 720-2',
-      },
-      {
-        icon: 'shop',
-        name: 'AK플라자(분당우체국 앞)',
-        express: '3500',
-        local: '310',
-      },
-      {
-        icon: 'train',
-        name: '서현역 앞',
-        express: '5500-1',
-        local: '17, 33, 116-3, 220, 250, 300, 720-1, 720-2',
+        type: '대절버스',
+        detail:
+          '08:30 삼천포 공설운동장 출발\n09:10 서진주 만남의광장 경유\n상세 정보는 신부 측 연락 부탁드립니다.',
       },
     ],
   },
   accounts: {
     groom: [
       { bank: '국민은행', number: '498102-01-351089', holder: '장재균' },
-      { bank: '신한은행', number: '000-000-000000', holder: '장병국' },
-      { bank: '우리은행', number: '000-000-000000', holder: '김은미' },
+      { bank: '신한은행', number: '110-062-277680', holder: '장병국' },
+      { bank: '농협은행', number: '302-1203-7408-91', holder: '김은미' },
     ],
     bride: [
-      { bank: '카카오뱅크', number: '0000-00-0000000', holder: '배유빈' },
-      { bank: '하나은행', number: '000-000000-00000', holder: '배동춘' },
-      { bank: '농협은행', number: '000-0000-0000-00', holder: '김진경' },
+      { bank: '케이뱅크', number: '100-195-850093', holder: '배유빈' },
+      { bank: '농협은행', number: '827012-52-069684', holder: '배동춘' },
+      { bank: '농협은행', number: '827012-51-023044', holder: '김진경' },
     ],
   },
   gallery: [

@@ -47,7 +47,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   copyrightText: {
     fontFamily: "var(--font-display)",
-    fontSize: '1.5rem',
+    fontSize: '1rem',
     color: '#A87850',
     letterSpacing: '2px',
     display: 'inline-flex',

@@ -99,9 +99,14 @@ const Lightbox = ({
   )
 }
 
+const PREVIEW_COUNT = 9   // 3열 × 3행 — 더보기 전까지 노출할 사진 수
+
 const Gallery = () => {
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null)
+  const [expanded, setExpanded] = useState(false)
   const images = weddingConfig.gallery
+  const visibleImages = expanded ? images : images.slice(0, PREVIEW_COUNT)
+  const hasMore = images.length > PREVIEW_COUNT
 
   return (
     <section style={styles.section} className="fade-in">
@@ -109,7 +114,7 @@ const Gallery = () => {
       <h2 style={styles.title}></h2>
 
       <div style={styles.grid}>
-        {images.map((src, i) => (
+        {visibleImages.map((src, i) => (
           <div
             key={i}
             style={styles.imageWrapper}
@@ -124,6 +129,21 @@ const Gallery = () => {
           </div>
         ))}
       </div>
+
+      {hasMore && (
+        <button
+          style={styles.moreBtn}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? '접기' : `사진 더보기 (${images.length - PREVIEW_COUNT}장)`}
+          <span style={{
+            ...styles.moreArrow,
+            transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+          }}>
+            ▾
+          </span>
+        </button>
+      )}
 
       {selectedIdx !== null && (
         <Lightbox
@@ -172,6 +192,28 @@ const styles: Record<string, React.CSSProperties> = {
     objectFit: 'cover',
     transition: 'transform 0.3s ease',
   },
+  moreBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '6px',
+    width: '100%',
+    marginTop: '16px',
+    padding: '10px 20px',
+    fontFamily: "var(--font-display)",
+    fontSize: '0.95rem',
+    color: 'var(--color-accent)',
+    backgroundColor: 'transparent',
+    border: '1px solid #E89940',
+    borderRadius: '24px',
+    cursor: 'pointer',
+    letterSpacing: '2px',
+  },
+  moreArrow: {
+    display: 'inline-block',
+    fontSize: '0.9rem',
+    transition: 'transform 0.3s ease',
+  },
 }
 
 const lightboxStyles: Record<string, React.CSSProperties> = {
@@ -197,7 +239,7 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
     backgroundColor: 'var(--color-primary)',
     color: '#FFFFFF',
-    fontSize: '1.6rem',
+    fontSize: '1.4rem',
     fontWeight: 300,
     display: 'flex',
     alignItems: 'center',
@@ -239,7 +281,7 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
     backgroundColor: 'rgba(201, 169, 110, 0.15)',
     color: 'var(--color-accent)',
-    fontSize: '1.5rem',
+    fontSize: '1.3rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -248,7 +290,7 @@ const lightboxStyles: Record<string, React.CSSProperties> = {
   },
   counter: {
     color: 'var(--color-text-light)',
-    fontSize: '2rem',
+    fontSize: '1rem',
     fontFamily: "var(--font-display)",
   },
 }

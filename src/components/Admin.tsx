@@ -10,8 +10,15 @@ interface RsvpEntry {
   name: string
   message: string
   dining: boolean
+  shuttle?: 'sacheon' | 'jinju' | 'none'
   guestCount: number
   createdAt: Timestamp | null
+}
+
+const SHUTTLE_LABEL: Record<string, string> = {
+  sacheon: '삼천포',
+  jinju: '진주',
+  none: '탑승안함',
 }
 
 interface GuestMessage {
@@ -58,12 +65,13 @@ const Admin = () => {
       '참석여부': r.attending ? '참석' : '불참',
       '이름': r.name,
       '식사여부': r.attending ? (r.dining ? '식사함' : '식사안함') : '-',
+      '하객버스': r.attending ? (SHUTTLE_LABEL[r.shuttle ?? 'none'] ?? '탑승안함') : '-',
       '인원수': r.attending ? r.guestCount : 0,
       '등록일시': formatDate(r.createdAt),
       '메시지': r.message || '',
     }))
     const ws = XLSX.utils.json_to_sheet(rows)
-    ws['!cols'] = [{ wch: 8 }, { wch: 8 }, { wch: 10 }, { wch: 10 }, { wch: 8 }, { wch: 18 }, { wch: 40 }]
+    ws['!cols'] = [{ wch: 8 }, { wch: 8 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 8 }, { wch: 18 }, { wch: 40 }]
     if (ws['!ref']) ws['!autofilter'] = { ref: ws['!ref'] } // 헤더 1행 필터
     const wb = XLSX.utils.book_new()
     XLSX.utils.book_append_sheet(wb, ws, 'RSVP')
@@ -166,6 +174,7 @@ const Admin = () => {
                   <th style={s.th}>참석</th>
                   <th style={s.th}>이름</th>
                   <th style={s.th}>식사</th>
+                  <th style={s.th}>버스</th>
                   <th style={s.th}>인원</th>
                   <th style={s.th}>일시</th>
                   <th style={s.th}>메시지</th>
@@ -180,6 +189,7 @@ const Admin = () => {
                     </td>
                     <td style={s.td}>{r.name}</td>
                     <td style={s.td}>{r.attending ? (r.dining ? 'O' : 'X') : '-'}</td>
+                    <td style={s.td}>{r.attending ? (SHUTTLE_LABEL[r.shuttle ?? 'none'] ?? '탑승안함') : '-'}</td>
                     <td style={s.td}>{r.attending ? r.guestCount : '-'}</td>
                     <td style={{ ...s.td, fontSize: '0.7rem' }}>{formatDate(r.createdAt)}</td>
                     <td style={{ ...s.td, textAlign: 'left', whiteSpace: 'normal', minWidth: '160px' }}>{r.message || '-'}</td>
@@ -233,7 +243,7 @@ const s: Record<string, React.CSSProperties> = {
     maxWidth: '360px',
   },
   loginTitle: {
-    fontFamily: "'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.2rem',
     color: 'var(--color-text-dark)',
     marginBottom: '24px',
@@ -250,7 +260,7 @@ const s: Record<string, React.CSSProperties> = {
     marginBottom: '12px',
     outline: 'none',
     boxSizing: 'border-box',
-    fontFamily: "'Noto Serif KR', serif",
+    fontFamily: "var(--font-serif)",
   },
   loginBtn: {
     width: '100%',
@@ -261,7 +271,7 @@ const s: Record<string, React.CSSProperties> = {
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
-    fontFamily: "'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
   },
   container: {
     maxWidth: '700px',
@@ -271,7 +281,7 @@ const s: Record<string, React.CSSProperties> = {
     minHeight: '100vh',
   },
   pageTitle: {
-    fontFamily: "'Gowun Batang', serif",
+    fontFamily: "var(--font-display)",
     fontSize: '1.3rem',
     color: 'var(--color-text-dark)',
     textAlign: 'center',
@@ -294,7 +304,7 @@ const s: Record<string, React.CSSProperties> = {
     borderRadius: '8px',
     cursor: 'pointer',
     color: 'var(--color-text)',
-    fontFamily: "'Noto Serif KR', serif",
+    fontFamily: "var(--font-serif)",
   },
   tabActive: {
     backgroundColor: 'var(--color-primary)',
@@ -334,7 +344,7 @@ const s: Record<string, React.CSSProperties> = {
     borderRadius: '8px',
     cursor: 'pointer',
     marginBottom: '16px',
-    fontFamily: "'Noto Serif KR', serif",
+    fontFamily: "var(--font-serif)",
   },
   tableWrap: {
     overflowX: 'auto',
@@ -345,7 +355,7 @@ const s: Record<string, React.CSSProperties> = {
     width: '100%',
     borderCollapse: 'collapse',
     fontSize: '0.8rem',
-    fontFamily: "'Noto Serif KR', serif",
+    fontFamily: "var(--font-serif)",
   },
   th: {
     padding: '10px 6px',

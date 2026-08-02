@@ -131,7 +131,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   title: {
     fontFamily: "var(--font-display)",
-    fontSize: '2rem',
+    fontSize: '1.35rem',
     fontWeight: 400,
     color: 'var(--color-text-dark)',
     marginTop: '0px',
@@ -139,7 +139,7 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: '4px',
   },
   subtitle: {
-    fontSize: '1.5rem',
+    fontSize: '0.9rem',
     color: 'var(--color-text-light)',
     marginBottom: '24px',
   },
@@ -151,7 +151,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   nameInput: {
     padding: '12px 14px',
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     color: 'var(--color-text-dark)',
     backgroundColor: '#FFFFFF',
     border: '1px solid #F5D9B8',
@@ -161,7 +161,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   textarea: {
     padding: '12px 14px',
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     color: 'var(--color-text-dark)',
     backgroundColor: '#FFFFFF',
     border: '1px solid #F5D9B8',
@@ -173,7 +173,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   submitBtn: {
     padding: '12px',
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     color: '#FFFFFF',
     backgroundColor: 'var(--color-primary)',
     border: 'none',
@@ -203,17 +203,17 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: '6px',
   },
   messageName: {
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     fontWeight: 700,
     color: 'var(--color-text-dark)',
     fontFamily: "var(--font-display)",
   },
   messageDate: {
-    fontSize: '1.2rem',
+    fontSize: '0.75rem',
     color: '#A87850',
   },
   messageText: {
-    fontSize: '1.3rem',
+    fontSize: '0.9rem',
     color: 'var(--color-text)',
     lineHeight: 1.7,
     whiteSpace: 'pre-wrap',

@@ -28,7 +28,22 @@
       "Bash(git remote *)",
       "Bash(git push *)",
       "Bash(cmdkey /list)",
-      "PowerShell(cmdkey /delete:git:https://github.com)"
+      "PowerShell(cmdkey /delete:git:https://github.com)",
+      "PowerShell(claude plugin marketplace add JuliusBrussee/caveman)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\" -ErrorAction SilentlyContinue | Select-Object Name, Mode)",
+      "PowerShell(& \"C:\\\\Users\\\\KBS\\\\AppData\\\\Local\\\\AnthropicClaude\\\\claude.exe\" plugin marketplace add JuliusBrussee/caveman)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\plugins\" -Recurse -Depth 2 -ErrorAction SilentlyContinue | Select-Object FullName, Length | Format-Table -AutoSize)",
+      "PowerShell($p = & \"C:\\\\Users\\\\KBS\\\\AppData\\\\Local\\\\AnthropicClaude\\\\claude.exe\" --version; \"version output: [$p]\"; \"exit: $LASTEXITCODE\")",
+      "PowerShell(\"--- npm root ---\"; try { npm root -g } catch { \"npm not found\" }; \"--- Programs dir ---\"; Get-ChildItem \"$env:LOCALAPPDATA\\\\Programs\" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name; \"--- where.exe ---\"; where.exe claude 2>$null; where.exe claude.cmd 2>$null; where.exe claude.ps1 2>$null)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\KBS\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name; \"--- native installs ---\"; Get-ChildItem \"$env:LOCALAPPDATA\\\\AnthropicClaude\" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"https://api.github.com/repos/JuliusBrussee/caveman\" -UseBasicParsing -TimeoutSec 20; $j = $r.Content | ConvertFrom-Json; \"full_name: $\\($j.full_name\\)\"; \"description: $\\($j.description\\)\"; \"default_branch: $\\($j.default_branch\\)\"; \"stars: $\\($j.stargazers_count\\)\" } catch { \"ERROR: $\\($_.Exception.Message\\)\" })",
+      "PowerShell(npx tsc --noEmit)",
+      "Bash(sed -i \"s/fontFamily: \\\\\"'Onglip Uiyeon', 'Gowun Batang', serif\\\\\"/fontFamily: \\\\\"var\\(--font-display\\)\\\\\"/g\" src/App.tsx)",
+      "Bash(sed -i \"s/fontFamily=\\\\\"'Onglip Uiyeon', serif\\\\\"/fontFamily=\\\\\"'Gowun Dodum', sans-serif\\\\\"/g\" src/components/ElevatorMapModal.tsx)",
+      "Bash(sed -i \"s/fontFamily: \\\\\"'Gowun Batang', serif\\\\\"/fontFamily: \\\\\"var\\(--font-display\\)\\\\\"/g; s/fontFamily: \\\\\"'Noto Serif KR', serif\\\\\"/fontFamily: \\\\\"var\\(--font-serif\\)\\\\\"/g\" src/components/Admin.tsx)",
+      "Bash(sed -i \"s/document.fonts.load\\('1.6rem \\\\\"Onglip Uiyeon\\\\\"'\\)/document.fonts.load\\('1.6rem \\\\\"Gowun Dodum\\\\\"'\\)/\" src/components/Intro.tsx)",
+      "PowerShell(if \\($?\\) { \"TYPECHECK OK\" })",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:5173/wedding-invitation/\" -UseBasicParsing -TimeoutSec 10; \"HTTP $\\($r.StatusCode\\)\" } catch { \"DOWN: $\\($_.Exception.Message\\)\" })"
     ]
   }
 }

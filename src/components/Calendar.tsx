@@ -7,13 +7,10 @@ const Calendar = () => {
   const month = weddingDate.getMonth()
   const weddingDay = weddingDate.getDate()
 
-  // 예식 안내용 날짜·시간 문자열
-  const weekday = ['일', '월', '화', '수', '목', '금', '토'][weddingDate.getDay()]
-  const hh = weddingDate.getHours()
-  const mm = weddingDate.getMinutes()
-  const period = hh < 12 ? '오전' : hh === 12 ? '낮' : '오후'
-  const displayHour = hh > 12 ? hh - 12 : hh
-  const timeStr = `${period} ${displayHour}시${mm > 0 ? ` ${mm}분` : ''}`
+  // 달력 예식일 하단에 표기할 시각 (예: 14:00)
+  const clockStr = `${String(weddingDate.getHours()).padStart(2, '0')}:${String(
+    weddingDate.getMinutes()
+  ).padStart(2, '0')}`
 
   // 예식 시작 시각(오후 2시) 기준으로 남은 시간 계산 — 초 단위까지
   function calcRemaining() {
@@ -55,18 +52,6 @@ const Calendar = () => {
     <section style={styles.section} className="fade-in">
       <div className="section-divider" />
 
-      {/* 예식 안내 */}
-      <div style={styles.infoBlock}>
-        <p style={styles.infoTitle}>예식 안내</p>
-        <p style={styles.infoLine}>
-          {year}년 {monthName}월 {weddingDay}일 {weekday}요일 {timeStr}
-        </p>
-        <p style={styles.infoLine}>
-          {weddingConfig.location.region} {weddingConfig.location.name}{' '}
-          {weddingConfig.location.hall}
-        </p>
-      </div>
-
       <h2 style={styles.title}>
         {year}년 {monthName}월
       </h2>
@@ -88,22 +73,25 @@ const Calendar = () => {
             const isWeddingDay = day === weddingDay
             const dayOfWeek = i % 7
             return (
-              <span
-                key={i}
-                style={{
-                  ...styles.day,
-                  ...(isWeddingDay ? styles.weddingDay : {}),
-                  color: isWeddingDay
-                    ? '#FFFFFF'
-                    : dayOfWeek === 0
-                    ? 'var(--color-primary)'
-                    : dayOfWeek === 6
-                    ? '#6B9BD2'
-                    : 'var(--color-text)',
-                }}
-              >
-                {day || ''}
-              </span>
+              <div key={i} style={styles.cell}>
+                <span
+                  style={{
+                    ...styles.day,
+                    ...(isWeddingDay ? styles.weddingDay : {}),
+                    color: isWeddingDay
+                      ? '#FFFFFF'
+                      : dayOfWeek === 0
+                      ? 'var(--color-primary)'
+                      : dayOfWeek === 6
+                      ? '#6B9BD2'
+                      : 'var(--color-text)',
+                  }}
+                >
+                  {day || ''}
+                </span>
+                {/* 예식일 하단에 예식 시각 표기 */}
+                {isWeddingDay && <span style={styles.dayTime}>{clockStr}</span>}
+              </div>
             )
           })}
         </div>
@@ -119,9 +107,9 @@ const Calendar = () => {
         ) : (
           <>
             <p style={styles.ddayLabel}>결혼식까지 남은 시간</p>
-            <p style={styles.ddayDays}>{remaining.days}일</p>
             <p style={styles.ddayText}>
-              {pad(remaining.hours)}시간 {pad(remaining.minutes)}분 {pad(remaining.seconds)}초
+              {remaining.days}일 {pad(remaining.hours)}시간 {pad(remaining.minutes)}분{' '}
+              {pad(remaining.seconds)}초
             </p>
           </>
         )}
@@ -138,30 +126,9 @@ const styles: Record<string, React.CSSProperties> = {
     margin: '0 auto',
     backgroundColor: 'var(--color-bg)',
   },
-  // 예식 안내 (달력 패널과 동일 배경 — 섹션 배경 상속)
-  infoBlock: {
-    textAlign: 'center',
-    marginTop: '20px',
-    marginBottom: '28px',
-  },
-  infoTitle: {
-    fontFamily: "var(--font-display)",
-    fontSize: '2rem',          // 달력 제목(2026년 11월)과 동일
-    color: 'var(--color-accent)',
-    letterSpacing: '4px',
-    marginBottom: '12px',
-  },
-  infoLine: {
-    fontFamily: "var(--font-display)",
-    fontSize: '1.7rem',          // 달력 제목과 동일
-    color: 'var(--color-text)',
-    letterSpacing: '1px',
-    lineHeight: 1.6,
-    margin: 0,
-  },
   title: {
     fontFamily: "var(--font-display)",
-    fontSize: '2rem',
+    fontSize: '1.35rem',
     fontWeight: 400,
     color: 'var(--color-text-dark)',
     marginTop: '20px',
@@ -178,14 +145,23 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: '8px',
   },
   dayLabel: {
-    fontSize: '2rem',
+    fontSize: '0.85rem',
     fontWeight: 700,
     padding: '4px 0',
   },
   dayGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(7, 1fr)',
-    gap: '2px',
+    gap: '2px 2px',
+    rowGap: '6px',
+  },
+  // 날짜 셀 — 예식일은 숫자 아래에 시각이 붙으므로 세로 스택
+  cell: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    minHeight: '36px',
   },
   day: {
     display: 'flex',
@@ -193,37 +169,39 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: 'center',
     width: '36px',
     height: '36px',
-    margin: '0 auto',
-    fontSize: '2rem',
+    fontSize: '1rem',
     borderRadius: '50%',
+    flexShrink: 0,
   },
   weddingDay: {
     backgroundColor: 'var(--color-primary)',
     color: '#FFFFFF',
     fontWeight: 700,
   },
+  dayTime: {
+    fontFamily: "var(--font-display)",
+    fontSize: '0.7rem',
+    fontWeight: 700,
+    color: 'var(--color-primary)',
+    lineHeight: 1.2,
+    marginTop: '3px',
+    whiteSpace: 'nowrap',
+  },
   dday: {
     marginTop: '24px',
   },
   ddayLabel: {
     fontFamily: "var(--font-display)",
-    fontSize: '1.3rem',
+    fontSize: '0.85rem',
     color: 'var(--color-text-light)',
     letterSpacing: '1px',
     marginBottom: '4px',
   },
-  ddayDays: {
-    fontFamily: "var(--font-display)",
-    fontSize: '2rem',          // 남은 일수 강조
-    color: 'var(--color-accent)',
-    letterSpacing: '1px',
-    whiteSpace: 'nowrap',
-  },
   ddayText: {
     fontFamily: "var(--font-display)",
-    fontSize: '2rem',          // 시·분·초 (일수와 동일 크기)
+    fontSize: '1rem',       // 한 줄 유지 위해 축소
     color: 'var(--color-accent)',
-    letterSpacing: '1px',
+    letterSpacing: '0.5px',
     whiteSpace: 'nowrap',      // 좁은 화면에서도 한 줄 유지
   },
 }

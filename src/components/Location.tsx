@@ -1,47 +1,6 @@
-import { useEffect, useRef, useState, Fragment } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { weddingConfig } from '../config'
 import ElevatorMapModal from './ElevatorMapModal'
-
-// 버스 정류장 라인 아이콘 (시안 A · 깔끔한 직선 1.5px)
-const BusStopIcon = ({ type }: { type: string }) => {
-  const common = {
-    width: 22,
-    height: 22,
-    viewBox: '0 0 24 24',
-    fill: 'none' as const,
-    stroke: 'var(--color-text-dark)',
-    strokeWidth: 1.5,
-    strokeLinecap: 'round' as const,
-    strokeLinejoin: 'round' as const,
-  }
-  if (type === 'apartment') {
-    return (
-      <svg {...common}>
-        <path d="M3 21V11L12 4L21 11V21" />
-        <path d="M9 21V14H15V21" />
-      </svg>
-    )
-  }
-  if (type === 'shop') {
-    return (
-      <svg {...common}>
-        <path d="M5 9H19V21H5V9Z" />
-        <path d="M9 9V6C9 4.34 10.34 3 12 3C13.66 3 15 4.34 15 6V9" />
-      </svg>
-    )
-  }
-  // train
-  return (
-    <svg {...common}>
-      <rect x="5" y="4" width="14" height="13" rx="2" />
-      <path d="M5 11H19" />
-      <circle cx="9" cy="14" r="0.8" fill="#3D3D3D" />
-      <circle cx="15" cy="14" r="0.8" fill="#3D3D3D" />
-      <path d="M8 17L6 20" />
-      <path d="M16 17L18 20" />
-    </svg>
-  )
-}
 
 declare global {
   interface Window {
@@ -152,56 +111,30 @@ const Location = () => {
         </a>
       </div>
 
-      {/* 약도 보기 버튼 */}
+      {/* 엘레베이터 정보 버튼 */}
       <button
         style={styles.mapModalBtn}
         onClick={() => setShowElevatorMap(true)}
-        aria-label="약도 보기"
+        aria-label="엘레베이터 정보"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
           <path d="M3 6L9 4L15 6L21 4V18L15 20L9 18L3 20V6Z" />
           <path d="M9 4V18" />
           <path d="M15 6V20" />
         </svg>
-        약도 보기
+        엘레베이터 정보
       </button>
 
-      {/* 약도 팝업 */}
+      {/* 엘레베이터 정보 팝업 */}
       <ElevatorMapModal isOpen={showElevatorMap} onClose={() => setShowElevatorMap(false)} />
 
       {/* 교통 안내 */}
       <div style={styles.transport}>
         {location.transport.map((item, i) => (
-          <Fragment key={i}>
-            <div style={styles.transportItem}>
-              <span style={styles.transportType}>{item.type}</span>
-              <span style={styles.transportDetail}>{item.detail}</span>
-            </div>
-            {/* 지하철 다음에 버스 정류장 섹션 삽입 */}
-            {item.type === '지하철' && (
-              <div style={styles.transportItem}>
-                <span style={styles.transportType}>버스</span>
-                <div style={styles.busStopsList}>
-                  {location.busStops.map((stop, idx) => (
-                    <div key={idx} style={styles.busStop}>
-                      <div style={styles.busStopHeader}>
-                        <BusStopIcon type={stop.icon} />
-                        <span style={styles.busStopName}>{stop.name}</span>
-                      </div>
-                      <div style={styles.busRoutes}>
-                        <span style={styles.busRouteLabel}>광역/직행</span>
-                        {stop.express}
-                      </div>
-                      <div style={styles.busRoutes}>
-                        <span style={styles.busRouteLabel}>일반시내</span>
-                        {stop.local}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </Fragment>
+          <div key={i} style={styles.transportItem}>
+            <span style={styles.transportType}>{item.type}</span>
+            <span style={styles.transportDetail}>{item.detail}</span>
+          </div>
         ))}
       </div>
     </section>
@@ -218,7 +151,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   title: {
     fontFamily: "var(--font-display)",
-    fontSize: '2rem',
+    fontSize: '1.35rem',
     fontWeight: 400,
     color: 'var(--color-text-dark)',
     marginTop: '0px',
@@ -230,23 +163,23 @@ const styles: Record<string, React.CSSProperties> = {
   },
   venueName: {
     fontFamily: "var(--font-display)",
-    fontSize: '1.7rem',
+    fontSize: '1.15rem',
     fontWeight: 700,
     color: 'var(--color-text-dark)',
-    marginBottom: '-10px',
+    marginBottom: '-2px',
   },
   venueHall: {
-    fontSize: '1.7rem',
+    fontSize: '1rem',
     color: 'var(--color-text)',
-    marginBottom: '-10px',
+    marginBottom: '-2px',
   },
   address: {
-    fontSize: '1.7rem',
+    fontSize: '0.9rem',
     color: 'var(--color-text-light)',
     marginBottom: '0px',
   },
   copyBtn: {
-    fontSize: '1.3rem',
+    fontSize: '0.85rem',
     color: 'var(--color-accent)',
     backgroundColor: 'transparent',
     border: '1px solid #E89940',
@@ -284,7 +217,7 @@ const styles: Record<string, React.CSSProperties> = {
     display: 'block',
   },
   mapLabel: {
-    fontSize: '1.5rem',
+    fontSize: '0.8rem',
     color: 'var(--color-text)',
     whiteSpace: 'nowrap',
   },
@@ -294,7 +227,7 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: 'center',
     width: '100%',
     padding: '12px 16px',
-    fontSize: '1.1rem',
+    fontSize: '0.95rem',
     fontWeight: 600,
     color: 'var(--color-accent)',
     backgroundColor: 'transparent',
@@ -313,7 +246,7 @@ const styles: Record<string, React.CSSProperties> = {
   transportItem: {
     display: 'flex',
     gap: '12px',
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     lineHeight: 1.6,
     alignItems: 'flex-start',       // 다중 라인 detail이 와도 type은 위쪽에 고정
   },
@@ -321,45 +254,12 @@ const styles: Record<string, React.CSSProperties> = {
     flexShrink: 0,
     fontWeight: 700,
     color: 'var(--color-accent)',
-    minWidth: '70px',               // 4글자 라벨(대절버스)도 한 줄에 들어가도록
+    minWidth: '58px',               // 4글자 라벨(대절버스)도 한 줄에 들어가도록
     whiteSpace: 'nowrap',
   },
   transportDetail: {
     color: 'var(--color-text)',
     whiteSpace: 'pre-line',         // \n을 줄바꿈으로 렌더링
-  },
-  busStopsList: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0px',
-    flex: 1,
-    minWidth: 0,
-  },
-  busStop: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4px',
-  },
-  busStopHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    fontWeight: 700,
-    color: 'var(--color-text-dark)',
-  },
-  busStopName: {
-    fontSize: '1.5rem',
-  },
-  busRoutes: {
-    fontSize: '1.5rem',
-    color: 'var(--color-text)',
-    paddingLeft: '30px',
-    lineHeight: 1.5,
-  },
-  busRouteLabel: {
-    color: 'var(--color-accent)',
-    fontWeight: 700,
-    marginRight: '6px',
   },
 }
 

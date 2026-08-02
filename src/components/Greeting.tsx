@@ -2,12 +2,45 @@ import { useState } from 'react'
 import { weddingConfig } from '../config'
 
 const Greeting = () => {
-  const { groom, bride, greeting } = weddingConfig
+  const { groom, bride, greeting, location } = weddingConfig
   const [showParentContact, setShowParentContact] = useState(false)
+
+  // 메인 비주얼에서 옮겨온 예식 요약 (이름 · 일시 · 장소)
+  const d = new Date(weddingConfig.date)
+  const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][d.getDay()]
+  const hours = d.getHours()
+  const minutes = d.getMinutes()
+  const period = hours < 12 ? '오전' : hours === 12 ? '낮' : '오후'
+  const displayHour = hours > 12 ? hours - 12 : hours
+  const timeStr = `${period} ${displayHour}시${minutes > 0 ? ` ${minutes}분` : ''}`
+  const dateStr = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')} ${dayOfWeek}요일 ${timeStr}`
 
   return (
     <section style={styles.section} className="fade-in">
       <div className="section-divider" />
+
+      {/* 신랑·신부 / 일시 / 장소 */}
+      <div style={styles.summary}>
+        <div style={styles.summaryNames}>
+          <span style={styles.summaryName}>{groom.name}</span>
+          <svg width="22" height="20" viewBox="0 0 24 22" fill="none">
+            <defs>
+              <linearGradient id="grDoubleHeart" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#FFB570" />
+                <stop offset="100%" stopColor="#E04E0F" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(10 2.4) scale(0.8)" opacity="0.7">
+              <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#grDoubleHeart)" />
+            </g>
+            <path d="M9 19.5 C3.5 15 0.5 11.4 0.5 8 C0.5 5.5 2.5 3.6 4.6 3.6 C6.6 3.6 7.9 4.7 9 6.6 C10.1 4.7 11.4 3.6 13.4 3.6 C15.5 3.6 17.5 5.5 17.5 8 C17.5 11.4 14.5 15 9 19.5 Z" fill="url(#grDoubleHeart)" />
+          </svg>
+          <span style={styles.summaryName}>{bride.name}</span>
+        </div>
+        <p style={styles.summaryLine}>{dateStr}</p>
+        <p style={styles.summaryLine}>{location.name} {location.hall}</p>
+      </div>
+
       <h2 style={styles.title}>{greeting.title}</h2>
       <p style={styles.message}>{greeting.message}</p>
 
@@ -180,9 +213,36 @@ const styles: Record<string, React.CSSProperties> = {
     margin: '0 auto',
     backgroundColor: '#FFFFFF',
   },
+  // 메인 비주얼에서 옮겨온 예식 요약 블록
+  summary: {
+    textAlign: 'center',
+    marginBottom: '32px',
+  },
+  summaryNames: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '12px',
+    marginBottom: '6px',
+  },
+  summaryName: {
+    fontFamily: "var(--font-display)",
+    fontSize: '1.35rem',
+    fontWeight: 600,
+    color: 'var(--color-text-dark)',
+    letterSpacing: '4px',
+  },
+  summaryLine: {
+    fontFamily: "var(--font-display)",
+    fontSize: '0.9rem',
+    color: 'var(--color-text)',
+    letterSpacing: '1px',
+    lineHeight: 1.6,
+    margin: 0,
+  },
   title: {
     fontFamily: "var(--font-display)",
-    fontSize: '2.5rem',
+    fontSize: '1.6rem',
     fontWeight: 400,
     color: 'var(--color-text-dark)',
     marginTop: '0px',
@@ -190,7 +250,7 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: '4px',
   },
   message: {
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     lineHeight: 2,
     color: 'var(--color-text)',
     whiteSpace: 'pre-line',
@@ -213,44 +273,49 @@ const styles: Record<string, React.CSSProperties> = {
   parentNames: {
     display: 'flex',
     alignItems: 'center',
-    gap: '4px',
-    flex: '1',
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap',        // 좁은 화면에서 옆 칸을 침범하는 대신 줄바꿈
+    gap: '0 4px',
+    flex: '1 1 auto',
     minWidth: 0,
   },
   parentName: {
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     color: 'var(--color-text)',
     whiteSpace: 'nowrap',
   },
   dot: {
     color: 'var(--color-accent)',
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
   },
   roleAndName: {
     display: 'flex',
     alignItems: 'center',
-    gap: '6px',
+    gap: '5px',
     whiteSpace: 'nowrap',
+    flexShrink: 0,           // 혼주 이름에 밀려 찌그러지지 않도록
   },
   role: {
-    fontSize: '1.3rem',
+    fontSize: '0.85rem',
     color: 'var(--color-text-light)',
   },
   personName: {
     fontFamily: "var(--font-display)",
-    fontSize: '1.5rem',
+    fontSize: '1rem',
     color: 'var(--color-text-dark)',
     fontWeight: 600,
   },
   contactIcons: {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
-    marginLeft: '8px',
+    gap: '6px',
+    marginLeft: '6px',
+    flexShrink: 0,
   },
   iconBtn: {
-    width: '36px',
-    height: '36px',
+    width: '32px',
+    height: '32px',
+    flexShrink: 0,
     borderRadius: '50%',
     backgroundColor: 'rgba(201, 169, 110, 0.08)',
     border: '1px solid rgba(201, 169, 110, 0.2)',
@@ -261,8 +326,9 @@ const styles: Record<string, React.CSSProperties> = {
     textDecoration: 'none',
   },
   iconBtnSmall: {
-    width: '32px',
-    height: '32px',
+    width: '30px',
+    height: '30px',
+    flexShrink: 0,
     borderRadius: '50%',
     backgroundColor: 'rgba(201, 169, 110, 0.08)',
     border: '1px solid rgba(201, 169, 110, 0.2)',
@@ -278,12 +344,12 @@ const styles: Record<string, React.CSSProperties> = {
     margin: '8px 0',
   },
   deceased: {
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     color: 'var(--color-text-light)',
   },
   parentContactBtn: {
     fontFamily: "var(--font-display)",
-    fontSize: '1.3rem',
+    fontSize: '0.95rem',
     color: 'var(--color-accent)',
     backgroundColor: 'transparent',
     border: '1px solid #E89940',
@@ -299,7 +365,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   arrow: {
     display: 'inline-block',
-    fontSize: '1.3rem',
+    fontSize: '0.9rem',
     transition: 'transform 0.3s ease',
   },
   parentContactPanel: {
@@ -310,7 +376,7 @@ const styles: Record<string, React.CSSProperties> = {
     marginTop: '10px',                      // 버튼과 박스 사이 간격
   },
   parentContactLabel: {
-    fontSize: '1.5rem',
+    fontSize: '0.9rem',
     color: 'var(--color-accent)',
     fontWeight: 600,
     textAlign: 'left' as const,
@@ -325,7 +391,7 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '0px 0',
   },
   parentContactName: {
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     color: 'var(--color-text)',
   },
 }

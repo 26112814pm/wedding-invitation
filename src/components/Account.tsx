@@ -85,7 +85,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   title: {
     fontFamily: "var(--font-display)",
-    fontSize: '2rem',
+    fontSize: '1.35rem',
     fontWeight: 400,
     color: 'var(--color-text-dark)',
     marginTop: '0px',
@@ -93,7 +93,7 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: '4px',
   },
   subtitle: {
-    fontSize: '1.5rem',
+    fontSize: '0.9rem',
     color: 'var(--color-text-light)',
     marginBottom: '28px',
   },
@@ -105,7 +105,7 @@ const styles: Record<string, React.CSSProperties> = {
   toggleBtn: {
     width: '100%',
     padding: '14px 20px',
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     color: 'var(--color-text)',
     backgroundColor: 'var(--color-bg)',
     border: '1px solid #F5D9B8',
@@ -139,21 +139,21 @@ const styles: Record<string, React.CSSProperties> = {
     gap: '2px',
   },
   bank: {
-    fontSize: '1.5rem',
+    fontSize: '0.8rem',
     color: 'var(--color-text-light)',
   },
   number: {
-    fontSize: '1.5rem',
+    fontSize: '0.95rem',
     color: 'var(--color-text-dark)',
     fontWeight: 700,
   },
   holder: {
-    fontSize: '1.5rem',
+    fontSize: '0.8rem',
     color: 'var(--color-text-light)',
   },
   copyBtn: {
     padding: '6px 14px',
-    fontSize: '1.5rem',
+    fontSize: '0.85rem',
     color: '#FFFFFF',
     backgroundColor: 'var(--color-primary)',
     border: 'none',

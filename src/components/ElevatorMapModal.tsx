@@ -29,13 +29,13 @@ const ElevatorMapModal = ({ isOpen, onClose }: Props) => {
           &times;
         </button>
 
-        <h3 style={styles.title}>약도</h3>
+        <h3 style={styles.title}>엘레베이터 정보</h3>
         <p style={styles.desc}>각 입구별로 엘레베이터가 1대씩 배치되어있으니 참고 부탁드립니다.</p>
 
         <div style={styles.mapWrapper}>
           <svg viewBox="0 0 600 430" width="100%" style={{ display: 'block' }}>
             {/* 주변 건물 */}
-            <g fontFamily="'Onglip Uiyeon', serif" fill="#7A6E5B">
+            <g fontFamily="'Gowun Dodum', sans-serif" fill="#7A6E5B">
               <rect x="130" y="20" width="420" height="74" rx="6" fill="#ECE3D0" stroke="#D9CDB2" strokeWidth="1" />
               <text x="340" y="64" textAnchor="middle" fontSize="28" fontWeight="700">분당제생병원</text>
 
@@ -54,10 +54,10 @@ const ElevatorMapModal = ({ isOpen, onClose }: Props) => {
             <rect x="130" y="115" width="320" height="220" rx="12" fill="#FFF8EC" stroke="#FF6B1A" strokeWidth="2.5" />
 
             {/* 건물 내부 라벨 */}
-            <g fontFamily="'Onglip Uiyeon', serif" fill="#5A5A5A">
+            <g fontFamily="'Gowun Dodum', sans-serif" fill="#5A5A5A">
               <text x="290" y="158" textAnchor="middle" fontSize="28" fontWeight="600">상생약국</text>
               <text x="290" y="232" textAnchor="middle" fontSize="32" fontWeight="700" fill="#3D3D3D">더 메리든</text>
-              <text x="410" y="288" textAnchor="middle" fontSize="28  " fontWeight="600">서현순대</text>
+              <text x="385" y="288" textAnchor="middle" fontSize="28" fontWeight="600">서현순대</text>
               <text x="220" y="320" textAnchor="middle" fontSize="28" fontWeight="600">CGV</text>
             </g>
 
@@ -148,7 +148,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   title: {
     fontFamily: "var(--font-display)",
-    fontSize: '2rem',
+    fontSize: '1.25rem',
     fontWeight: 700,
     color: 'var(--color-text-dark)',
     textAlign: 'center',
@@ -156,7 +156,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   desc: {
     fontFamily: "var(--font-display)",
-    fontSize: '28px',
+    fontSize: '0.85rem',
     color: 'var(--color-text-light)',
     textAlign: 'center',
     margin: '0 0 16px',
@@ -177,7 +177,7 @@ const styles: Record<string, React.CSSProperties> = {
     display: 'flex',
     alignItems: 'center',
     gap: '7px',
-    fontSize: '1.5rem',
+    fontSize: '0.85rem',
   },
   badge: {
     flexShrink: 0,

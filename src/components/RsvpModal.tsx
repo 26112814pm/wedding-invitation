@@ -15,6 +15,7 @@ const RsvpModal = ({ isOpen, onClose }: RsvpModalProps) => {
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [dining, setDining] = useState<boolean>(true)
+  const [shuttle, setShuttle] = useState<'sacheon' | 'jinju' | 'none'>('none')
   const [guestCount, setGuestCount] = useState(1)
   const [submitting, setSubmitting] = useState(false)
 
@@ -69,6 +70,7 @@ const RsvpModal = ({ isOpen, onClose }: RsvpModalProps) => {
         name: name.trim(),
         message: message.trim(),
         dining: attending ? dining : false,
+        shuttle: attending ? shuttle : 'none',
         guestCount: attending ? guestCount : 0,
         createdAt: serverTimestamp(),
       })
@@ -80,6 +82,7 @@ const RsvpModal = ({ isOpen, onClose }: RsvpModalProps) => {
       setSide('groom')
       setAttending(true)
       setDining(true)
+      setShuttle('none')
       setGuestCount(1)
     } catch {
       alert('전송에 실패했습니다. 다시 시도해주세요.')
@@ -176,8 +179,36 @@ const RsvpModal = ({ isOpen, onClose }: RsvpModalProps) => {
               </button>
             </div>
 
+            {/* 하객 버스 탑승 여부 */}
+            <label style={s.label}>하객 버스 탑승 여부</label>
+            <div style={s.toggleRow}>
+              <button
+                style={{ ...s.toggleBtn, ...(shuttle === 'sacheon' ? s.toggleActive : {}) }}
+                onClick={() => setShuttle('sacheon')}
+              >
+                삼천포
+              </button>
+              <button
+                style={{ ...s.toggleBtn, ...(shuttle === 'jinju' ? s.toggleActive : {}) }}
+                onClick={() => setShuttle('jinju')}
+              >
+                진주
+              </button>
+              <button
+                style={{ ...s.toggleBtn, ...(shuttle === 'none' ? s.toggleActive : {}) }}
+                onClick={() => setShuttle('none')}
+              >
+                탑승 안함
+              </button>
+            </div>
+            <p style={s.helpText}>
+              삼천포 08:30 공설운동장
+              <br />
+              진주 09:10 서진주 만남의광장
+            </p>
+
             {/* 인원수 */}
-            <label style={s.label}>본인 포함 총 인원</label>
+            <label style={{ ...s.label, textAlign: 'center' }}>본인 포함 총 인원</label>
             <div style={s.counterRow}>
               <button
                 style={s.counterBtn}
@@ -260,7 +291,7 @@ const s: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
     backgroundColor: 'transparent',
     color: 'var(--color-text-light)',
-    fontSize: '1.4rem',
+    fontSize: '1.3rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -271,7 +302,7 @@ const s: Record<string, React.CSSProperties> = {
   },
   title: {
     fontFamily: "var(--font-display)",
-    fontSize: '2rem',
+    fontSize: '1.3rem',
     fontWeight: 400,
     color: 'var(--color-text-dark)',
     textAlign: 'center',
@@ -286,7 +317,7 @@ const s: Record<string, React.CSSProperties> = {
     borderBottom: '1px solid #F8DEBC',
   },
   infoLine: {
-    fontSize: '1.5rem',
+    fontSize: '0.9rem',
     color: 'var(--color-text)',
     fontFamily: "var(--font-display)",
     margin: '4px 0',
@@ -294,7 +325,7 @@ const s: Record<string, React.CSSProperties> = {
   },
   label: {
     display: 'block',
-    fontSize: '1.25rem',
+    fontSize: '0.85rem',
     color: 'var(--color-text-light)',
     marginBottom: '8px',
     marginTop: '16px',
@@ -307,7 +338,7 @@ const s: Record<string, React.CSSProperties> = {
   toggleBtn: {
     flex: 1,
     padding: '12px',
-    fontSize: '1.25rem',
+    fontSize: '0.85rem',
     color: 'var(--color-text)',
     backgroundColor: 'var(--color-bg)',
     borderWidth: '1px',
@@ -323,10 +354,16 @@ const s: Record<string, React.CSSProperties> = {
     borderColor: 'var(--color-primary)',
     color: '#FFFFFF',
   },
+  helpText: {
+    fontSize: '0.75rem',
+    color: 'var(--color-text-light)',
+    margin: '8px 0 0',
+    lineHeight: 1.5,
+  },
   input: {
     width: '100%',
     padding: '12px 14px',
-    fontSize: '1.25rem',
+    fontSize: '0.95rem',
     color: 'var(--color-text-dark)',
     backgroundColor: 'var(--color-bg)',
     borderWidth: '1px',
@@ -351,7 +388,7 @@ const s: Record<string, React.CSSProperties> = {
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'var(--color-divider)',
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
     color: 'var(--color-primary)',
     cursor: 'pointer',
     display: 'flex',
@@ -359,7 +396,7 @@ const s: Record<string, React.CSSProperties> = {
     justifyContent: 'center',
   },
   counterValue: {
-    fontSize: '1.5rem',
+    fontSize: '1rem',
     fontWeight: 700,
     color: 'var(--color-text-dark)',
     minWidth: '40px',
@@ -370,7 +407,7 @@ const s: Record<string, React.CSSProperties> = {
     width: '100%',
     padding: '16px',
     marginTop: '28px',
-    fontSize: '1.5rem',
+    fontSize: '1rem',
     color: '#FFFFFF',
     backgroundColor: 'var(--color-primary)',
     border: 'none',
@@ -383,7 +420,7 @@ const s: Record<string, React.CSSProperties> = {
     width: '100%',
     padding: '12px',
     marginTop: '10px',
-    fontSize: '1.2rem',
+    fontSize: '0.85rem',
     color: 'var(--color-text-light)',
     backgroundColor: 'transparent',
     border: 'none',

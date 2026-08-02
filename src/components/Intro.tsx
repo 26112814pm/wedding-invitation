@@ -41,7 +41,7 @@ const Intro = ({ onComplete }: IntroProps) => {
     let cancelled = false
     const fontPromise =
       typeof document !== 'undefined' && document.fonts
-        ? document.fonts.load('1.6rem "Onglip Uiyeon"').catch(() => null)
+        ? document.fonts.load('1.6rem "Gowun Dodum"').catch(() => null)
         : Promise.resolve(null)
     const imagePromises = FRAMES.map(
       (src) =>
@@ -159,14 +159,14 @@ const introStyles: Record<string, React.CSSProperties> = {
   },
   name: {
     fontFamily: "var(--font-display)",
-    fontSize: '2.4rem',
+    fontSize: '1.8rem',
     fontWeight: 600,
     color: 'var(--color-text-dark)',
     letterSpacing: '4px',
   },
   dateText: {
     fontFamily: "var(--font-display)",
-    fontSize: '1.5rem',
+    fontSize: '1rem',
     color: 'var(--color-text)',
     letterSpacing: '2px',
     margin: 0,
