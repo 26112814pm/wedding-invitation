@@ -34,7 +34,7 @@ const App = () => {
     const alreadySubmitted = localStorage.getItem('rsvp_submitted')
     const todayDismissed = dismissedDate === new Date().toDateString()
     if (!alreadySubmitted && !todayDismissed) {
-      setTimeout(() => setShowRsvpPopup(true), 800)
+      setTimeout(() => setShowRsvpPopup(true), 1000)
     }
     // 플로팅 버튼은 스크롤 시 표시
     setTimeout(() => setShowFloatingBtn(true), 100)

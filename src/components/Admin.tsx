@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { collection, query, orderBy, onSnapshot, Timestamp } from 'firebase/firestore'
+import { collection, query, orderBy, onSnapshot, deleteDoc, doc, Timestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import * as XLSX from 'xlsx'
 
@@ -8,7 +8,6 @@ interface RsvpEntry {
   side: string
   attending: boolean
   name: string
-  message: string
   dining: boolean
   shuttle?: 'sacheon' | 'jinju' | 'none'
   guestCount: number
@@ -53,6 +52,15 @@ const Admin = () => {
     return () => { unsub1(); unsub2() }
   }, [authed])
 
+  const handleDelete = async (col: 'rsvp' | 'guestbook', id: string, label: string) => {
+    if (!window.confirm(`"${label}" 항목을 삭제하시겠습니까? 되돌릴 수 없습니다.`)) return
+    try {
+      await deleteDoc(doc(db, col, id))
+    } catch {
+      alert('삭제에 실패했습니다. Firestore 보안 규칙에서 delete 권한을 확인해주세요.')
+    }
+  }
+
   const formatDate = (ts: Timestamp | null) => {
     if (!ts) return ''
     const d = ts.toDate()
@@ -68,10 +76,9 @@ const Admin = () => {
       '하객버스': r.attending ? (SHUTTLE_LABEL[r.shuttle ?? 'none'] ?? '탑승안함') : '-',
       '인원수': r.attending ? r.guestCount : 0,
       '등록일시': formatDate(r.createdAt),
-      '메시지': r.message || '',
     }))
     const ws = XLSX.utils.json_to_sheet(rows)
-    ws['!cols'] = [{ wch: 8 }, { wch: 8 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 8 }, { wch: 18 }, { wch: 40 }]
+    ws['!cols'] = [{ wch: 8 }, { wch: 8 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 8 }, { wch: 18 }]
     if (ws['!ref']) ws['!autofilter'] = { ref: ws['!ref'] } // 헤더 1행 필터
     const wb = XLSX.utils.book_new()
     XLSX.utils.book_append_sheet(wb, ws, 'RSVP')
@@ -177,7 +184,7 @@ const Admin = () => {
                   <th style={s.th}>버스</th>
                   <th style={s.th}>인원</th>
                   <th style={s.th}>일시</th>
-                  <th style={s.th}>메시지</th>
+                  <th style={s.th}></th>
                 </tr>
               </thead>
               <tbody>
@@ -192,7 +199,11 @@ const Admin = () => {
                     <td style={s.td}>{r.attending ? (SHUTTLE_LABEL[r.shuttle ?? 'none'] ?? '탑승안함') : '-'}</td>
                     <td style={s.td}>{r.attending ? r.guestCount : '-'}</td>
                     <td style={{ ...s.td, fontSize: '0.7rem' }}>{formatDate(r.createdAt)}</td>
-                    <td style={{ ...s.td, textAlign: 'left', whiteSpace: 'normal', minWidth: '160px' }}>{r.message || '-'}</td>
+                    <td style={s.td}>
+                      <button style={s.deleteBtn} onClick={() => handleDelete('rsvp', r.id, r.name)}>
+                        삭제
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -212,7 +223,12 @@ const Admin = () => {
               <div key={g.id} style={s.guestCard}>
                 <div style={s.guestHeader}>
                   <strong>{g.name}</strong>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--color-text-light)' }}>{formatDate(g.createdAt)}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--color-text-light)' }}>{formatDate(g.createdAt)}</span>
+                    <button style={s.deleteBtn} onClick={() => handleDelete('guestbook', g.id, g.name)}>
+                      삭제
+                    </button>
+                  </div>
                 </div>
                 <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'var(--color-text)' }}>{g.message}</p>
               </div>
@@ -387,6 +403,17 @@ const s: Record<string, React.CSSProperties> = {
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: '4px',
+  },
+  deleteBtn: {
+    padding: '4px 10px',
+    fontSize: '0.7rem',
+    color: '#C62828',
+    backgroundColor: 'transparent',
+    border: '1px solid #C62828',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    fontFamily: "var(--font-serif)",
+    whiteSpace: 'nowrap',
   },
 }
 

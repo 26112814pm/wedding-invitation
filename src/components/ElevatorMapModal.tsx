@@ -29,8 +29,8 @@ const ElevatorMapModal = ({ isOpen, onClose }: Props) => {
           &times;
         </button>
 
-        <h3 style={styles.title}>엘레베이터 정보</h3>
-        <p style={styles.desc}>각 입구별로 엘레베이터가 1대씩 배치되어있으니 참고 부탁드립니다.</p>
+        <h3 style={styles.title}>엘리베이터 정보</h3>
+        <p style={styles.desc}>각 입구별로 엘리베이터가 1대씩 배치되어있으니 참고 부탁드립니다.</p>
 
         <div style={styles.mapWrapper}>
           <svg viewBox="0 0 600 430" width="100%" style={{ display: 'block' }}>

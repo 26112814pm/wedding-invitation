@@ -111,21 +111,21 @@ const Location = () => {
         </a>
       </div>
 
-      {/* 엘레베이터 정보 버튼 */}
+      {/* 엘리베이터 정보 버튼 */}
       <button
         style={styles.mapModalBtn}
         onClick={() => setShowElevatorMap(true)}
-        aria-label="엘레베이터 정보"
+        aria-label="엘리베이터 정보"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
           <path d="M3 6L9 4L15 6L21 4V18L15 20L9 18L3 20V6Z" />
           <path d="M9 4V18" />
           <path d="M15 6V20" />
         </svg>
-        엘레베이터 정보
+        엘리베이터 정보
       </button>
 
-      {/* 엘레베이터 정보 팝업 */}
+      {/* 엘리베이터 정보 팝업 */}
       <ElevatorMapModal isOpen={showElevatorMap} onClose={() => setShowElevatorMap(false)} />
 
       {/* 교통 안내 */}
@@ -246,7 +246,7 @@ const styles: Record<string, React.CSSProperties> = {
   transportItem: {
     display: 'flex',
     gap: '12px',
-    fontSize: '0.95rem',
+    fontSize: '0.8rem',
     lineHeight: 1.6,
     alignItems: 'flex-start',       // 다중 라인 detail이 와도 type은 위쪽에 고정
   },

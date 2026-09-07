@@ -64,12 +64,6 @@ const Guestbook = () => {
     }
   }
 
-  const formatDate = (ts: Timestamp | null) => {
-    if (!ts) return ''
-    const d = ts.toDate()
-    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`
-  }
-
   return (
     <section style={styles.section} className="fade-in">
       {cosmosDivider}
@@ -108,10 +102,7 @@ const Guestbook = () => {
         <div style={styles.messageList}>
           {messages.map((msg) => (
             <div key={msg.id} style={styles.messageCard}>
-              <div style={styles.messageHeader}>
-                <span style={styles.messageName}>{msg.name}</span>
-                <span style={styles.messageDate}>{formatDate(msg.createdAt)}</span>
-              </div>
+              <span style={styles.messageName}>{msg.name}</span>
               <p style={styles.messageText}>{msg.message}</p>
             </div>
           ))}
@@ -196,21 +187,13 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '14px 16px',
     border: '1px solid #F5D9B8',
   },
-  messageHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '6px',
-  },
   messageName: {
+    display: 'block',
     fontSize: '0.95rem',
     fontWeight: 700,
     color: 'var(--color-text-dark)',
     fontFamily: "var(--font-display)",
-  },
-  messageDate: {
-    fontSize: '0.75rem',
-    color: '#A87850',
+    marginBottom: '6px',
   },
   messageText: {
     fontSize: '0.9rem',

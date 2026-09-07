@@ -64,16 +64,24 @@ const RsvpModal = ({ isOpen, onClose }: RsvpModalProps) => {
 
     setSubmitting(true)
     try {
+      const trimmedMessage = message.trim()
       await addDoc(collection(db, 'rsvp'), {
         side,
         attending,
         name: name.trim(),
-        message: message.trim(),
         dining: attending ? dining : false,
         shuttle: attending ? shuttle : 'none',
         guestCount: attending ? guestCount : 0,
         createdAt: serverTimestamp(),
       })
+      // 전하고 싶은 말은 참석의사에는 저장하지 않고 방명록에만 등록
+      if (trimmedMessage) {
+        await addDoc(collection(db, 'guestbook'), {
+          name: name.trim(),
+          message: trimmedMessage,
+          createdAt: serverTimestamp(),
+        })
+      }
       alert('참석 의사가 전달되었습니다. 감사합니다!')
       localStorage.setItem('rsvp_submitted', 'true')
       onClose()
@@ -202,9 +210,9 @@ const RsvpModal = ({ isOpen, onClose }: RsvpModalProps) => {
               </button>
             </div>
             <p style={s.helpText}>
-              삼천포 08:30 공설운동장
+              08:00 삼천포 공설운동장
               <br />
-              진주 09:10 서진주 만남의광장
+              08:40 서진주 만남의광장(IC 공영주차장)
             </p>
 
             {/* 인원수 */}
@@ -259,8 +267,8 @@ const s: Record<string, React.CSSProperties> = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(250, 246, 241, 0.95)',
-    backdropFilter: 'blur(8px)',
+    backgroundColor: 'rgba(250, 246, 241, 0.65)',
+    backdropFilter: 'blur(4px)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -289,15 +297,15 @@ const s: Record<string, React.CSSProperties> = {
     width: '36px',
     height: '36px',
     borderRadius: '50%',
-    backgroundColor: 'transparent',
-    color: 'var(--color-text-light)',
+    backgroundColor: 'var(--color-primary)',
+    color: '#000000',
     fontSize: '1.3rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: 'var(--color-divider)',
+    borderColor: 'var(--color-primary)',
     cursor: 'pointer',
   },
   title: {

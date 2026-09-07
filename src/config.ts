@@ -9,6 +9,10 @@ export const weddingConfig = {
     phone: '010-3322-2306',
     fatherPhone: '010-4407-3840',
     motherPhone: '010-3439-4579',
+    // TODO: 실제 카카오톡 프로필 링크로 교체 필요
+    kakaoUrl: 'http://qr.kakao.com/talk/soNJavF_84OcjPlxA9RAVhJ73rc-',
+    fatherKakaoUrl: 'https://open.kakao.com/o/dummy-groom-father',
+    motherKakaoUrl: 'https://open.kakao.com/o/dummy-groom-mother',
   },
   bride: {
     name: '배유빈',
@@ -20,13 +24,17 @@ export const weddingConfig = {
     phone: '010-7756-5340',
     fatherPhone: '010-2863-5340',
     motherPhone: '010-2795-5340',
+    // TODO: 실제 카카오톡 프로필 링크로 교체 필요
+    kakaoUrl: 'http://qr.kakao.com/talk/8Cz12NORiyowJwuD3ah2YkUjD0M-',
+    fatherKakaoUrl: 'https://open.kakao.com/o/dummy-bride-father',
+    motherKakaoUrl: 'https://open.kakao.com/o/dummy-bride-mother',
   },
-  mainPhoto: '/wedding-invitation/images/main.jpg',
+  mainPhoto: '/wedding-invitation/images/main.png',
   date: '2026-11-28T14:00:00',
   greeting: {
     title: '결혼합니다',
     message:
-      '여전히 같이 노는 게 누구보다 재밌고\n서로를 통해 함께하는 세상을 배워나갑니다.\n\n같은 하늘을 보고 서로를 노래하면서\n춤을 추고 부지런히 사랑하겠습니다.\n\n행복한 이 순간\n함께 해주시면 좋겠습니다.',
+      '여전히 같이 노는 게 무엇보다 재밌고\n서로를 통해 함께하는 세상을 배워나갑니다.\n\n같은 하늘을 보고 서로를 노래하면서\n춤을 추고 부지런히 사랑하겠습니다.\n\n행복한 이 순간\n함께 해주시면 좋겠습니다.',
   },
   location: {
     name: '더메리든',
@@ -44,9 +52,9 @@ export const weddingConfig = {
       { type: '지하철', detail: '수인분당선 서현역 5번 출구에서 도보 5분' },
       { type: '주차', detail: '건물 내 주차장 이용 가능 (2시간30분 무료)' },
       {
-        type: '대절버스',
+        type: '하객버스',
         detail:
-          '08:30 삼천포 공설운동장 출발\n09:10 서진주 만남의광장 경유\n상세 정보는 신부 측 연락 부탁드립니다.',
+          '08:00 삼천포 공설운동장 출발\n08:40 서진주 만남의광장 (IC 공영주차장)\n상세 정보는 신부 측 연락 부탁드립니다.',
       },
     ],
   },
@@ -63,25 +71,29 @@ export const weddingConfig = {
     ],
   },
   gallery: [
-    '/wedding-invitation/images/gallery/photo1.jpg',
-    '/wedding-invitation/images/gallery/photo2.jpg',
-    '/wedding-invitation/images/gallery/photo3.jpg',
-    '/wedding-invitation/images/gallery/photo4.jpg',
-    '/wedding-invitation/images/gallery/photo5.jpg',
-    '/wedding-invitation/images/gallery/photo6.jpg',
-    '/wedding-invitation/images/gallery/photo7.jpg',
-    '/wedding-invitation/images/gallery/photo8.jpg',
-    '/wedding-invitation/images/gallery/photo9.jpg',
-    '/wedding-invitation/images/gallery/photo10.jpg',
-    '/wedding-invitation/images/gallery/photo11.jpg',
-    '/wedding-invitation/images/gallery/photo12.jpg',
-    '/wedding-invitation/images/gallery/photo13.jpg',
-    '/wedding-invitation/images/gallery/photo14.jpg',
-    '/wedding-invitation/images/gallery/photo15.jpg',
-    '/wedding-invitation/images/gallery/photo16.jpg',
-    '/wedding-invitation/images/gallery/photo17.jpg',
-    '/wedding-invitation/images/gallery/photo18.jpg',
-    '/wedding-invitation/images/gallery/photo19.jpg',
-    '/wedding-invitation/images/gallery/photo20.jpg',
+    '/wedding-invitation/images/gallery/14 KSY_3830--+.jpg',
+    '/wedding-invitation/images/gallery/1 KSY_1524--+.jpg',
+    '/wedding-invitation/images/gallery/2 KSY_0994--++.jpg',
+    '/wedding-invitation/images/gallery/4 KSY_1565--++.jpg',
+    '/wedding-invitation/images/gallery/KSY_3045-+.jpg',
+    '/wedding-invitation/images/gallery/11 KSY_3097-+++.jpg',
+    '/wedding-invitation/images/gallery/7 KSY_2248--++.jpg',
+    '/wedding-invitation/images/gallery/10 KSY_2785--++.jpg',
+
+    '/wedding-invitation/images/gallery/9 KSY_2706--.jpg',
+    '/wedding-invitation/images/gallery/8 KSY_2568--++.jpg',
+
+    '/wedding-invitation/images/gallery/12 KSY_3144--++.jpg',
+    '/wedding-invitation/images/gallery/13 KSY_3345--+.jpg',
+    '/wedding-invitation/images/gallery/19 KSY_5043--+.jpg',
+    '/wedding-invitation/images/gallery/20 KSY_5266--+.jpg',
+    '/wedding-invitation/images/gallery/16 KSY_4291--+.jpg',
+    '/wedding-invitation/images/gallery/17 KSY_4712--++.jpg',
+    '/wedding-invitation/images/gallery/18 KSY_4815---+.jpg',
+
+    '/wedding-invitation/images/gallery/6 KSY_2085-++.jpg',
+    '/wedding-invitation/images/gallery/3 KSY_1053--+.jpg',
+
+    '/wedding-invitation/images/gallery/15 KSY_4033--.jpg',
   ],
 }
