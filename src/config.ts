@@ -29,7 +29,7 @@ export const weddingConfig = {
     fatherKakaoUrl: 'https://open.kakao.com/o/dummy-bride-father',
     motherKakaoUrl: 'https://open.kakao.com/o/dummy-bride-mother',
   },
-  mainPhoto: '/wedding-invitation/images/main.png',
+  mainPhoto: '/wedding-invitation/images/main.jpg',
   date: '2026-11-28T14:00:00',
   greeting: {
     title: '결혼합니다',
